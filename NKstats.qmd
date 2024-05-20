@@ -46,20 +46,8 @@ Hi! My name is Solomon Eshun. You can call me Solomon (he/him/his). I am from Gh
 - Data Production Intern, Ghana Statistical Service, Accra (05 - 08/2019)
 
 
-### Something interesting about myself, and what I hope to learn
-
-I take pride in my strong analytical and computational skills, tenacity, and dedication to continuous improvement. As I embark on the DSPG program, I seek to improve my leadership and mentoring capabilities, alongside acquiring new technical expertise. An important goal for me is to refine my communication skills to effectively convey data-driven insights to non-technical stakeholders. Additionally, I aim to master the management and extraction of value from extensive real-world datasets, leveraging these skills to make impactful decisions and contributions.
-
-In my leisure time, I enjoy listening to music, watching soccer games and playing video games.
-
-
-### Why I Care about Data Science
-
-I remember the moment I became interested in advanced research in Data Science. It was during my master's research, where I evaluated the effect of sodium-glucose co-transporter-2 (SGLT2) inhibitors on chronic kidney disease (CKD). I used propensity score matching to address differences in patient characteristics that might influence SGLT2 prescription. Additionally, I utilized machine learning models to predict CKD cases. Since the dataset was imbalanced, I applied balanced bagging with bootstrapping and synthetic minority oversampling to balance the distribution of CKD and non-CKD cases in the training data. This aimed to facilitate improved learning on the training dataset and enhance predictions on the testing data. The analysis revealed that individuals taking SGLT2 had fewer CKD cases than those who did not, highlighting the protective effect of SGLT2 on CKD. This shows the potential of statistics and data science in extracting meaningful insights from healthcare data.
-
-However, amidst this revelation, a significant issue surfaced - the absence of reliable data for marginalized populations, resulting in disproportionately worse health outcomes. Since then, my focus evolved from merely using models to make predictions to understanding the "why" and "what-if" behind those predictions. I realized that relying solely on supervised models was insufficient for this purpose, prompting me to develop methods that could integrate machine learning and causal approaches to address and explain predictions in imbalanced datasets.
 
 ![[Figure Reference (Causality for Machine Learning)](https://ff13.fastforwardlabs.com/)](imgs/whatif.png)  
 
-As a consequence, I aim to leverage machine learning with causal methods to understand the influence of policies and interventions on diseases outcomes across various data sources. I seek to move from prediction-based models to learning independent causal models in areas like transfer and meta-learning. This approach will aid in integrating diverse healthcare datasets, often compounded by heterogeneous patient characteristics and medical protocols, ensuring the generalizability of my findings against external datasets. Additionally, I aim to create models capable of scaling up datasets to better reflect the diversity of the population. My goal is to enhance model interpretability through counterfactual reasoning and mitigate algorithmic biases for fair and equitable outcomes, ensuring the reliability of healthcare research across different demographics.
+
 
