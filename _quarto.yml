@@ -10,15 +10,31 @@ website:
         href: https://github.com/NKstats 
       - icon: linkedin
         href: https://www.linkedin.com/in/se3008
-      - icon: envelop
+      - icon: envelope
         href: mailto:eshunsolomon5@gmail.com
         
+    left:
+      - text: "About"
+        href: about.html  # Links to the About page generated from about.qmd
+      - text: "Presentation & Research"
+        href: research.html  # Links to the Presentation & Research page
 
 format:
   html:
     theme: cosmo
-    css: styles.css
-
-
-
-
+    include-before: |
+      <style>
+        body {
+          font-family: 'Arial', sans-serif; /* Sets the font for the entire website */
+        }
+        .navbar {
+          background-color: #87CEEB; /* Sky Blue */
+        }
+        .navbar .navbar-brand {
+          font-weight: bold;
+          font-size: 30px; /* Larger font size for the navbar brand/title */
+        }
+        .navbar .nav-link {
+          font-size: 20px; /* Increase font size for all navigation links */
+        }
+      </style>
