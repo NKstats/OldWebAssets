@@ -10,6 +10,9 @@ website:
         href: https://github.com/NKstats 
       - icon: linkedin
         href: https://www.linkedin.com/in/se3008
+      - icon: envelop
+        href: mailto:eshunsolomon5@gmail.com
+        
 
 format:
   html:
