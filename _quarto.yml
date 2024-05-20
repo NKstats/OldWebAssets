@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "NKstats"
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com/NKstats 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/se3008
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+
+
