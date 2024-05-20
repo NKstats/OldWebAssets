@@ -10,8 +10,8 @@ categories: [Introduction]
 <style>
 .circle-img {
   border-radius: 50%; /* Create circular corners */
-  width: 380px; /* Specify the width */
-  height: 360px; /* Specify the height */
+  width: 300px; /* Specify the width */
+  height: 280px; /* Specify the height */
   object-fit: cover; /* Ensures the image covers the area without stretching */
 }
 </style>
