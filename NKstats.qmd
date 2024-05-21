@@ -9,10 +9,42 @@ categories: [ ]
 
 <style>
 .circle-img {
-  border-radius: 50%; /* Create circular corners */
-  width: 300px; /* Specify the width */
-  height: 280px; /* Specify the height */
-  object-fit: cover; /* Ensures the image covers the area without stretching */
+  border-radius: 50%;
+  width: 300px;
+  height: 280px;
+  object-fit: cover;
+}
+.justify-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+details {
+  position: relative;
+}
+details > summary {
+  color: #333333;
+  font-size: 24px;
+  list-style: none; /* Removes default list marker */
+  cursor: pointer;
+  outline: none; /* Removes the focus outline */
+}
+details > summary::-webkit-details-marker {
+  display: none; /* Hides the default arrow icon */
+}
+details > summary:before {
+  content: "+";
+  display: inline-block;
+  width: 25px; /* Box width */
+  height: 25px; /* Box height */
+  line-height: 25px; /* Aligns text vertically */
+  text-align: center; /* Centers text horizontally */
+  background: #87CEEB; /* Light grey background */
+  border: 1px solid #ccc; /* Grey border */
+  margin-right: 10px; /* Right margin for spacing */
+  font-size: 16px; /* Adjust size of the plus sign */
+}
+details[open] > summary:before {
+  content: "−"; /* Minus sign for open state */
 }
 </style>
 
@@ -20,15 +52,20 @@ categories: [ ]
 
 <br>
 
-Hi! My name is Solomon Eshun (he/him/his). My site is still under construction !! <!-- I am from Ghana, West Africa, and I’m currently pursuing a PhD. -->
+My site is still under construction !!
 
+
+Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University.  <!-- I am a PhD student in -->
+
+<div class="justify-text">
 My current research interests include causal inference, infectious disease modeling, data integration and machine learning. I am also interested in exploring high-dimensional inference, semiparametric models, and survival analysis as they apply to electronic health records and clinical trials. I aim to develop robust statistical methods and tools aimed at tackling complex problems in a range of public health issues including infectious diseases, cardiovascular diseases, cancer etc. I am committed to engaging with these topics through continual learning and academic exploration.
+</div>
 
 <div style="height: 10px;"></div>
 
 ```{=html}
 <details>
-<summary style="color: black; font-size: 24px;"><strong>Research Interests</strong></summary>
+<summary style="color: #333333; font-size: 24px;"><strong>Research Interests</strong></summary>
 under construction ...........
 </details>
 ```
@@ -36,7 +73,7 @@ under construction ...........
 
 ```{=html}
 <details>
-<summary style="color: black; font-size: 24px;"><strong>Education</strong></summary>
+<summary style="color: #333333; font-size: 24px;"><strong>Education</strong></summary>
 <div style="height: 10px;"></div>
 <ul>
     <li>
@@ -62,7 +99,7 @@ under construction ...........
 
 ```{=html}
 <details>
-<summary style="color: black; font-size: 24px;"><strong>Experience</strong></summary>
+<summary style="color: #333333; font-size: 24px;"><strong>Experience</strong></summary>
 <div style="height: 10px;"></div>
 <ul>
     <li>
