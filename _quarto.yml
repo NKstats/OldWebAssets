@@ -13,13 +13,15 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/se3008
 
-      
-        
     left:
       - text: "About"
-        href: about.html  # Links to the About page generated from about.qmd
-      - text: "Presentation & Research"
-        href: research.html  # Links to the Presentation & Research page
+        href: about.html
+      - text: "Research"
+        menu:
+          - text: "Publication"
+            href: research.html
+          - text: "Conference Presentation"
+            href: conference.html
 
 format:
   html:
@@ -28,7 +30,7 @@ format:
       <style>
         body {
           font-family: 'Arial', sans-serif; /* Sets the font for the entire website */
-          background-color: #f0f0f0; /* Light gray background for the entire website */
+          background-color: white; /* Soft Beige background for the entire website */
         }
         .navbar {
           background-color: #87CEEB; /* Sky Blue */
