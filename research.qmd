@@ -7,6 +7,10 @@ title: " "
 
 <div style="height: 10px;"></div>
 
+- **S. Eshun**. Equity in Focus: Investigating Gender Disparities in Glioblastoma via Propensity Score Matching. JMIRx Med (In Review: since August 15, 2023).
+
 - **S. Eshun**, R. Essieku, J. Ladzekpo (2023). Stability Analyses on the Effect of Vaccination and Contact Tracing in Monkeypox Virus Transmission. Journal of Mathematical \& Computational Science, 13. [Paper Link](https://doi.org/10.28919/jmcs/8038)
 
 - D. Florez, E. Romero-Severson, K.M. Martinez, C. Franco, **S. Eshun**, J.A. Spencer, C. Manore, M. Mancuso, J. Keithley (2022). Assessing the Risk of Dengue Outbreaks across Continental Biomes in Brazil. In AGU Fall Meeting Abstracts. 2022, GH25D-0625. [Abstract Link](https://ui.adsabs.harvard.edu/abs/2022AGUFMGH25D0625F/abstract)
+
+

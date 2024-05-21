@@ -30,7 +30,7 @@ format:
       <style>
         body {
           font-family: 'Arial', sans-serif; /* Sets the font for the entire website */
-          background-color: white; /* Soft Beige background for the entire website */
+          background-color: white /* #d9d9d9; /* Soft Beige background for the entire website */
         }
         .navbar {
           background-color: #87CEEB; /* Sky Blue */
