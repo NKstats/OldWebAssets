@@ -20,7 +20,7 @@ categories: [ ]
 
 <br>
 
-Hi! My name is Solomon Eshun. You can call me Solomon (he/him/his). I am from Ghana, West Africa, and I’m pursuing a PhD in Applied Mathematics at Iowa State University (as of Spring 2024).
+Hi! My name is Solomon Eshun (he/him/his). <!-- I am from Ghana, West Africa, and I’m currently pursuing a PhD in Biostatistics at the Gillings School of Global Public Health, UNC - Chapel Hill. -->
 
 
 
@@ -42,18 +42,20 @@ Hi! My name is Solomon Eshun. You can call me Solomon (he/him/his). I am from Gh
 
 <div style="height: 10px;"></div>
 
+<!-- - PhD Biostatistics, University of North Carolina - Chapel Hill (08/2024 - Present)
+<div style="height: 5px;"></div> -->
 - PhD (Student) Applied Mathematics, Iowa State University (08/2023 - 05/2024)
 <div style="height: 5px;"></div>
-- MSc Applied Stats. & Data Science, University of TX Rio Grande Valley (08/2021 - 05/2023)
+- MS Applied Stats. & Data Science, University of TX Rio Grande Valley (08/2021 - 05/2023)
 <div style="height: 5px;"></div>
-- BSc Mathematics, University of Mines and Technology (UMaT), Ghana (09/2016 - 08/2020)
+- BS Mathematics, University of Mines and Technology (UMaT), Ghana (09/2016 - 08/2020)
 
 ### Experience
 
 <div style="height: 10px;"></div>
 
-- Graduate Research Assistant, Center for AIDS Research (08/2024 - Present)
-<div style="height: 5px;"></div>
+<!-- - Graduate Research Assistant, Center for AIDS Research (08/2024 - Present)
+<div style="height: 5px;"></div> -->
 - Graduate Fellow, Data Science for the Public Good, Iowa State (05/2024 - 07/2024)
 <div style="height: 5px;"></div>
 - Graduate Teaching Assistant, Department of Mathematics, Iowa State (08/2023 - 05/2023)
