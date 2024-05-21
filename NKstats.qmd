@@ -1,5 +1,5 @@
 ---
-title: ""
+title: " "
 # author: "Solomon Eshun"
 # date: "2024-05-17"
 categories: [ ]
@@ -20,55 +20,81 @@ categories: [ ]
 
 <br>
 
-Hi! My name is Solomon Eshun (he/him/his). <!-- I am from Ghana, West Africa, and I’m currently pursuing a PhD in Biostatistics at the Gillings School of Global Public Health, UNC - Chapel Hill. -->
+Hi! My name is Solomon Eshun (he/him/his). My site is still under construction !! <!-- I am from Ghana, West Africa, and I’m currently pursuing a PhD. -->
 
-
-
-### Research Interests
+My current research interests include causal inference, infectious disease modeling, data integration and machine learning. I am also interested in exploring high-dimensional inference, semiparametric models, and survival analysis as they apply to electronic health records and clinical trials. I aim to develop robust statistical methods and tools aimed at tackling complex problems in a range of public health issues including infectious diseases, cardiovascular diseases, cancer etc. I am committed to engaging with these topics through continual learning and academic exploration.
 
 <div style="height: 10px;"></div>
 
-- Causal Inference
-<div style="height: 5px;"></div>
-- Infectious Disease
-<div style="height: 5px;"></div>
-- Data Integration
+```{=html}
+<details>
+<summary style="color: black; font-size: 24px;"><strong>Research Interests</strong></summary>
+under construction ...........
+</details>
+```
 
 
-![[Causality for Machine Learning](https://ff13.fastforwardlabs.com/)](imgs/whatif.png)  
-
-
-### Education
-
+```{=html}
+<details>
+<summary style="color: black; font-size: 24px;"><strong>Education</strong></summary>
 <div style="height: 10px;"></div>
+<ul>
+    <li>
+        <strong>PhD (Student) in Applied Mathematics</strong><br>
+        Iowa State University, Ames, 08/2023 - 05/2024
+    </li> <div style="height: 8px;"></div>
+    <li>
+        <strong>MS in Applied Statistics & Data Science</strong><br>
+        University of Texas Rio Grande Valley (UTRGV), Edinburg, 08/2021 - 05/2023
+    </li><div style="height: 8px;"></div>
+    <li>
+        <strong>BS in Mathematics</strong><br>
+        University of Mines and Technology (UMaT), Tarkwa, Ghana, 09/2016 - 08/2020
+    </li>
+</ul>
+</details>
+```
 
-<!-- - PhD Biostatistics, University of North Carolina - Chapel Hill (08/2024 - Present)
-<div style="height: 5px;"></div> -->
-- PhD (Student) Applied Mathematics, Iowa State University (08/2023 - 05/2024)
-<div style="height: 5px;"></div>
-- MS Applied Stats. & Data Science, University of TX Rio Grande Valley (08/2021 - 05/2023)
-<div style="height: 5px;"></div>
-- BS Mathematics, University of Mines and Technology (UMaT), Ghana (09/2016 - 08/2020)
 
-### Experience
 
+<!-- ![[Causality for Machine Learning](https://ff13.fastforwardlabs.com/)](imgs/whatif.png)  -->
+
+
+```{=html}
+<details>
+<summary style="color: black; font-size: 24px;"><strong>Experience</strong></summary>
 <div style="height: 10px;"></div>
+<ul>
+    <li>
+        Graduate Research Assistant, .......... (08/2024 - Present)
+    </li> <div style="height: 8px;"></div>
+    <li>
+        Graduate Fellow, Data Science for the Public Good, Iowa State (05/2024 - 07/2024)
+    </li><div style="height: 8px;"></div>
+    <li>
+        Graduate Teaching Assistant, Department of Mathematics, Iowa State (08/2023 - 05/2023)
+    </li>
+    </li><div style="height: 8px;"></div>
+    <li>
+        Sustainability Research Fellow, Office for Sustainability, UTRGV (08/2022 - 05/2023)
+    </li>    </li><div style="height: 8px;"></div>
+    <li>
+        Graduate Teaching Assistant, School of Math. & Stats. Sciences, UTRGV (08/2021 - 05/2023)
+    </li>    </li><div style="height: 8px;"></div>
+    <li>
+        Computational Science Intern, Los Alamos National Lab, Los Alamos NM (05/2022 - 08/2022)
+    </li>    </li><div style="height: 8px;"></div>
+    <li>
+        Teaching Assistant, Department of Mathematical Sciences, UMaT (09/2020 - 08/2021)
+    </li>
+        </li><div style="height: 8px;"></div>
+    <li>
+        Data Production Intern, Ghana Statistical Service, Accra (05/2019 - 08/2019)
+    </li>
+</ul>
+</details>
+```
 
-<!-- - Graduate Research Assistant, Center for AIDS Research (08/2024 - Present)
-<div style="height: 5px;"></div> -->
-- Graduate Fellow, Data Science for the Public Good, Iowa State (05/2024 - 07/2024)
-<div style="height: 5px;"></div>
-- Graduate Teaching Assistant, Department of Mathematics, Iowa State (08/2023 - 05/2023)
-<div style="height: 5px;"></div>
-- Sustainability Research Fellow, Office for Sustainability, UTRGV (08/2022 - 05/2023)
-<div style="height: 5px;"></div>
-- Graduate Teaching Assistant, School of Math. & Stats. Sciences, UTRGV (08/2021 - 05/2023)
-<div style="height: 5px;"></div>
-- Computational Science Intern, Los Alamos National Lab, Los Alamos NM (05/2022 - 08/2022)
-<div style="height: 5px;"></div>
-- Teaching Assistant, Department of Mathematical Sciences, UMaT (09/2020 - 08/2021)
-<div style="height: 5px;"></div>
-- Data Production Intern, Ghana Statistical Service, Accra (05/2019 - 08/2019)
 
 
 

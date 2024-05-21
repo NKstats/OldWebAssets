@@ -1,16 +1,14 @@
 ---
-title: "About"
+title: " "
 ---
 
-# About Us
+# About
 
-Welcome to NKstats! This page provides information about our projects, goals, and background.
+Welcome to NKstats! This page provides information about my projects, goals, and background.
 
-## Our Mission
+Full site is under construction....
 
-Our mission is to provide insightful statistical analyses to help inform decision-making processes in various sectors.
-
-## Contact Information
+### Contact Information
 
 For more inquiries, please contact us at [eshunsolomon5@gmail.com](mailto:eshunsolomon5@gmail.com).
 

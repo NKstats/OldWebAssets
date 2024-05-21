@@ -12,6 +12,7 @@ website:
         href: https://www.linkedin.com/in/se3008
       - icon: envelope
         href: mailto:eshunsolomon5@gmail.com
+      
         
     left:
       - text: "About"
@@ -26,7 +27,7 @@ format:
       <style>
         body {
           font-family: 'Arial', sans-serif; /* Sets the font for the entire website */
-          /* background-color: #f0f0f0; /* Light gray background for the entire website */
+          background-color: #f0f0f0; /* Light gray background for the entire website */
         }
         .navbar {
           background-color: #87CEEB; /* Sky Blue */
