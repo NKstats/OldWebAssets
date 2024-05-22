@@ -2,6 +2,16 @@
 title: " "
 ---
 
+<style>
+body {
+    font-size: 15px;
+}
+</style>
+
+
+
+
+
 # About
 
 Welcome to NKstats! This page provides information about my projects, goals, and background.
@@ -12,3 +22,4 @@ Full site is under construction....
 
 For more inquiries, please contact us at [eshunsolomon5@gmail.com](mailto:eshunsolomon5@gmail.com).
 
+$$y = \beta \mathbf{X} + \epsilon $$ (just for testing)

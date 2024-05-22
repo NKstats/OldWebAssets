@@ -15,7 +15,7 @@ categories: [ ]
   object-fit: cover;
 }
 body {
-    font-size: 14px;
+    font-size: 15px;
 }
 .justify-text {
   text-align: justify;
@@ -88,7 +88,7 @@ under construction ...........
     </li><div style="height: 10px;"></div>
     <li>
         <strong>BS in Mathematics</strong><br>
-        University of Mines and Technology (UMaT), Tarkwa, Ghana, 09/2016 - 08/2020
+        University of Mines and Technology (UMaT), Ghana, 09/2016 - 08/2020
     </li>
 </ul>
 </details>
@@ -121,7 +121,7 @@ under construction ...........
         Graduate Teaching Assistant, School of Math. & Stats. Sciences, UTRGV (08/2021 - 05/2023)
     </li>    </li><div style="height: 10px;"></div>
     <li>
-        Computational Science Intern, Los Alamos National Lab, Los Alamos NM (05/2022 - 08/2022)
+        Computational Science Intern, Los Alamos National Lab, Los Alamos, NM (05/2022 - 08/2022)
     </li>    </li><div style="height: 10px;"></div>
     <li>
         Teaching Assistant, Department of Mathematical Sciences, UMaT (09/2020 - 08/2021)

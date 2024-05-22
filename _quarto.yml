@@ -25,6 +25,7 @@ website:
 
 format:
   html:
+    katex: true
     theme: cosmo
     include-before: |
       <style>
