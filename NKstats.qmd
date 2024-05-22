@@ -15,7 +15,7 @@ categories: [ ]
   object-fit: cover;
 }
 body {
-    font-size: 16px; /* Adjust this value to change the font size */
+    font-size: 14px;
 }
 .justify-text {
   text-align: justify;
@@ -55,7 +55,7 @@ details[open] > summary:before {
 
 <br>
 
-Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University. My site is still under construction !! <!-- I am a PhD student -->
+Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University. My site is still under construction ! <!-- I am a PhD student -->
 
 <!-- <div class="justify-text"> -->
 My current research interests include causal inference, infectious disease modeling, data integration and machine learning. I am also interested in exploring high-dimensional inference, semiparametric models, and survival analysis as they apply to electronic health records and clinical trials. I aim to develop robust statistical methods and tools aimed at tackling complex problems in a range of public health issues including infectious diseases, cardiovascular diseases, cancer etc. I am committed to engaging with these topics through continual learning and academic exploration.
