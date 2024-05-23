@@ -17,4 +17,20 @@ body {
 
 - D. Florez, E. Romero-Severson, K.M. Martinez, C. Franco, **S. Eshun**, J.A. Spencer, C. Manore, M. Mancuso, J. Keithley (2022). Assessing the Risk of Dengue Outbreaks across Continental Biomes in Brazil. In AGU Fall Meeting Abstracts. 2022, GH25D-0625. [Abstract Link](https://ui.adsabs.harvard.edu/abs/2022AGUFMGH25D0625F/abstract)
 
+<div style="height: 30px;"></div>
 
+
+[![Figure 1](imgs/figure-3c.png){width=48.5% margin-right=2%} ![Figure 2](imgs/figure-3a.png){width=48.5%}](https://doi.org/10.28919/jmcs/8038)
+
+
+<!-- <div style="display: flex; justify-content: space-between;">
+  <img src="imgs/figure-3c.png" alt="Figure 1" style="width: 48.5%; margin-right: 2%;">
+  <img src="imgs/figure-3a.png" alt="Figure 2" style="width: 48.5%;">
+</div> -->
+
+<!-- ::: {.figure}
+![Figure 1](imgs/figure-3c.png){width=48.5% margin-right=2%}
+![Figure 2](imgs/figure-3a.png){width=48.5%}
+
+*Detailed information, visit [Effect of Vaccination and Contact Tracing in MpoX](https://doi.org/10.28919/jmcs/8038).*
+:::-->

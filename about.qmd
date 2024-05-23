@@ -1,5 +1,7 @@
 ---
 title: " "
+format: html
+jupyter: python3
 ---
 
 <style>
@@ -8,18 +10,84 @@ body {
 }
 </style>
 
-
-
-
-
-# About
+<div style="height: 20px;"></div>
 
 Welcome to NKstats! This page provides information about my projects, goals, and background.
 
-Full site is under construction....
+The full site is under construction...
 
-### Contact Information
+### Sample Python Execution
 
-For more inquiries, please contact us at [eshunsolomon5@gmail.com](mailto:eshunsolomon5@gmail.com).
+Below is an example of Python code that cleans text data for sentiment analysis.
 
-$$y = \beta \mathbf{X} + \epsilon $$ (just for testing)
+```{python}
+# Importing necessary library
+import numpy as np
+
+# Generating random data
+data = np.random.rand(5)
+
+# Output the data
+data
+```
+
+
+
+Below is an example of Python code that cleans text data for sentiment analysis.
+
+```{python}
+
+import numpy as np
+import pandas as pd
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+import re
+import sklearn
+from sklearn.preprocessing import normalize
+from nltk.stem import SnowballStemmer
+
+nltk.download('punkt')
+nltk.download('stopwords')
+
+
+
+stop_add = ['i', 'u', 'ur', 'uve', 'ive', 'im', 'your',
+            "i've","i'll", 'am,','us', 'dont', 'must',
+            'one', 'also', 'r', 'vr', 'n', 'mani',
+            'sooo', 'go', 'rli', 'oh']
+
+sw_nltk = stopwords.words('english')
+
+stop_add += sw_nltk
+
+
+def Preprocess(data_to_clean):
+
+    data_w1 = []
+    ps = PorterStemmer()
+
+    for i in range(0,len(data_to_clean)):
+
+        review_data = re.sub('[^a-zA-Z]', ' ', data_to_clean[i]).lower().split()
+
+
+        stem_list = [ps.stem(k) for k in review_data if not k
+                     in set(stopwords.words('english'))]
+
+        for word in stem_list:
+          if word in stop_add:
+            stem_list.remove(word)
+
+        strf = ' '.join(stem_list)
+        data_w1.append(strf)
+
+    return(data_w1)
+
+```
+
+
+
+
+

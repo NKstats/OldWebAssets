@@ -1,0 +1,17 @@
+---
+title: "Still working!"
+author: "Solomon Eshun"
+date: 2021-04-21
+description: " "
+image: /imgs/whatif.png
+categories: ["programming"]
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    smart: false
+    print_df: paged
+---
+
+
+dghdhshjs
