@@ -23,7 +23,7 @@ output:
 In sentiment analysis, the quality of input data can significantly influence the accuracy and effectiveness of the final outcomes. Analyzing texts, given their concise nature and informal language, presents unique challenges. This blog post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.
 
 <div style="text-align: center;">
-  <img src="/imgs/sentt.png" width="80%">
+  <img src="/imgs/senti.png" width="98%">
 </div>
 
 
