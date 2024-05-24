@@ -6,14 +6,6 @@ website:
   title: "NKstats"
   navbar:
     right:
-      - icon: envelope
-        href: mailto:eshunsolomon5@gmail.com
-      - icon: github
-        href: https://github.com/NKstats 
-      - icon: linkedin
-        href: https://www.linkedin.com/in/se3008
-
-    left:
       - text: "About"
         href: about.html
       - text: "Research"
@@ -24,6 +16,13 @@ website:
             href: conference.html
       - text: "Blog"
         href: blog.html
+      - icon: envelope
+        href: mailto:eshunsolomon5@gmail.com
+      - icon: github
+        href: https://github.com/NKstats 
+      - icon: linkedin
+        href: https://www.linkedin.com/in/se3008
+
 
 format:
   html:
@@ -47,10 +46,10 @@ format:
           font-size: 18px; /* Increase font size for all navigation links */
         }
       </style>
-    include-after: |
+    /*include-after: |
       <footer style="background-color: #f8f9fa; text-align: center; padding: 20px; font-size: 16px; display: flex; align-items: center; justify-content: center;">
         <div style="margin-right: 500px;">© 2024 Solomon Eshun. All rights reserved.</div>
         <div><span style="margin-right: 10px;">Connect with me on</span><a href="https://www.linkedin.com/in/se3008" style="margin-right: 10px;"><i class="fab fa-linkedin"></i> LinkedIn</a></div>
-      </footer>
+      </footer>*/
 
 

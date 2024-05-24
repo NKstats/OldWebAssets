@@ -8,7 +8,7 @@
 
 <meta name="author" content="Solomon Eshun">
 <meta name="dcterms.date" content="2022-04-11">
-<meta name="description" content="A guide to pre-processing text data for sentiment analysis.">
+<meta name="description" content="A guide to pre-processing text data for sentiment analysis in Python.">
 
 <title>NKstats - Cleaning Text Data in Python</title>
 <style>
@@ -126,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Research</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-research">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research">    
         <li>
     <a class="dropdown-item" href="../research.html">
  <span class="dropdown-text">Publication</span></a>
@@ -150,8 +150,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
-</ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="mailto:eshunsolomon5@gmail.com"> <i class="bi bi-envelope" role="img">
 </i> 
@@ -209,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div>
   <div class="description">
-    A guide to pre-processing text data for sentiment analysis.
+    A guide to pre-processing text data for sentiment analysis in Python.
   </div>
 </div>
 
@@ -241,6 +239,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 20px;">
 
 </div>
+<section id="outline" class="level3">
+<h3 class="anchored" data-anchor-id="outline">Outline</h3>
+<ol type="1">
+<li><a href="#Introduction-1">Introduction</a></li>
+<li><a href="#Python-codes-implementation">Python Implementation</a></li>
+</ol>
+</section>
+<section id="Introduction-1" class="level3">
+<h3 class="anchored" data-anchor-id="Introduction-1">Introduction</h3>
 <p>In sentiment analysis, the quality of input data can significantly influence the accuracy and effectiveness of the final outcomes. Analyzing texts, given their concise nature and informal language, presents unique challenges. This blog post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.</p>
 <div style="text-align: center;">
 <p><img src="../imgs/senti.png" width="85%"></p>
@@ -251,8 +258,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I also removed special characters, such as punctuation marks and symbols, from the text. These characters do not aid in sentiment analysis and can hinder the performance of further analyses.</p>
 <p>Additionally, I performed lemmatization on the text, which reduces words to their base or root forms. This consolidates similar words and reduces dimensionality, improving the model’s ability to generalize across different variations of words. For instance, words like “running,” “ran,” and “runs” are all reduced to the base form “run.”</p>
 <p>By applying these text preprocessing techniques, I transformed the raw tweet data into a clean and standardized format. This preparation is crucial for accurate sentiment analysis as it helps to eliminate noise, reduce dimensionality, and concentrate on the most relevant text features. The preprocessed tweets are now ready for further analysis and sentiment classification using suitable models.</p>
+</section>
+<section id="Python-codes-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="Python-codes-implementation">Python codes implementation</h3>
 <p>Before creating the preprocessing function, it’s essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.</p>
-<div id="44a57bd1" class="cell" data-execution_count="1">
+<div id="24bbd5d1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -276,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [nltk_data]     /Users/solomoneshun/nltk_data...
 [nltk_data]   Package wordnet is already up-to-date!</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>True</code></pre>
 </div>
 </div>
@@ -285,10 +295,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>re</strong>: Helps in removing punctuation and non-alphabetical characters using regular expressions.</li>
 <li><strong>stopwords</strong>: Common words in English that do not add much meaning to sentences and are often removed in the preprocessing step (eg. is, the, a, and, an, …).</li>
 </ul>
+</section>
 <section id="defining-the-text-preprocessing-function" class="level3">
 <h3 class="anchored" data-anchor-id="defining-the-text-preprocessing-function">Defining the Text Preprocessing Function</h3>
 <p>The main function, <code>preprocess_text</code>, cleans up the text data by removing unwanted characters, converting text to lowercase, removing stopwords, and lemmatizing the words.</p>
-<div id="0b6b12c4" class="cell" data-execution_count="2">
+<div id="3b13aa62" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_text(data):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    processed_data <span class="op">=</span> []</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    stop <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))  <span class="co"># Set of English stopwords</span></span>
@@ -316,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Stopwords Removal</strong>: Filters out common words that are unlikely to contribute to sentiment analysis.</li>
 </ul>
 <p>To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.</p>
-<div id="620027a4" class="cell" data-execution_count="3">
+<div id="a44c2a91" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> [<span class="st">"Wow! This place is amazing.. Visit @ 100% times; best meals ever!! :)"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cleaned_text <span class="op">=</span> preprocess_text(sample_text)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cleaned_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -328,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="creating-a-larger-dataframe-and-cleaning-texts" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-larger-dataframe-and-cleaning-texts">Creating a Larger DataFrame and Cleaning Texts</h3>
 <p>Next, we create a larger DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.</p>
-<div id="ebec80fd" class="cell" data-execution_count="4">
+<div id="e11a150f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating sample data</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Review'</span>: [</span>
@@ -352,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying the text preprocessing function</span></span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>reviews_df[<span class="st">'Cleaned_Review'</span>] <span class="op">=</span> preprocess_text(reviews_df[<span class="st">'Review'</span>].tolist())</span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>reviews_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <div>
 <div>
 
@@ -909,10 +920,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer style="background-color: #f8f9fa; text-align: center; padding: 20px; font-size: 16px; display: flex; align-items: center; justify-content: center;">
-  <div style="margin-right: 500px;">© 2024 Solomon Eshun. All rights reserved.</div>
-  <div><span style="margin-right: 10px;">Connect with me on</span><a href="https://www.linkedin.com/in/se3008" style="margin-right: 10px;"><i class="fab fa-linkedin"></i> LinkedIn</a></div>
-</footer>
 
 
 

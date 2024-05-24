@@ -4,7 +4,7 @@ format: html
 jupyter: python3
 author: "Solomon Eshun"
 date: 2022-04-11
-description: "A guide to pre-processing text data for sentiment analysis."
+description: "A guide to pre-processing text data for sentiment analysis in Python."
 image: /imgs/senti.png
 categories: ["programming"]
 tags: ["Python","ggplot2","purrr","rstats","correlation"]
@@ -19,6 +19,13 @@ output:
 
 <div style="height: 20px;"></div>
 
+### Outline
+
+1. [Introduction](#Introduction-1)
+2. [Python Implementation](#Python-codes-implementation)
+
+
+### Introduction {#Introduction-1}
 
 In sentiment analysis, the quality of input data can significantly influence the accuracy and effectiveness of the final outcomes. Analyzing texts, given their concise nature and informal language, presents unique challenges. This blog post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.
 
@@ -40,6 +47,7 @@ Additionally, I performed lemmatization on the text, which reduces words to thei
 By applying these text preprocessing techniques, I transformed the raw tweet data into a clean and standardized format. This preparation is crucial for accurate sentiment analysis as it helps to eliminate noise, reduce dimensionality, and concentrate on the most relevant text features. The preprocessed tweets are now ready for further analysis and sentiment classification using suitable models.
 
 
+### Python codes implementation {#Python-codes-implementation}
 
 Before creating the preprocessing function, it's essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.
 
