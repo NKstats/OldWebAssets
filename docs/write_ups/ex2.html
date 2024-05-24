@@ -8,6 +8,7 @@
 
 <meta name="author" content="Solomon Eshun">
 <meta name="dcterms.date" content="2022-04-11">
+<meta name="description" content="A guide to pre-processing text data for sentiment analysis.">
 
 <title>NKstats - Cleaning Text Data in Python</title>
 <style>
@@ -206,6 +207,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   </div>
 
+<div>
+  <div class="description">
+    A guide to pre-processing text data for sentiment analysis.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -237,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>In sentiment analysis, the quality of input data can significantly influence the accuracy and effectiveness of the final outcomes. Analyzing texts, given their concise nature and informal language, presents unique challenges. This blog post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.</p>
 <div style="text-align: center;">
-<p><img src="../imgs/senti.png" width="98%"></p>
+<p><img src="../imgs/senti.png" width="85%"></p>
 </div>
 <p>First, I removed any URLs from the tweets since they do not contribute to sentiment analysis and only add noise and irrelevant information to the text.</p>
 <p>Next, I tokenized the tweets by splitting them into individual words. Tokenization allows for processing the text at a detailed level, treating each word as a separate entity, which is crucial for the cleaning and analysis that follows.</p>
@@ -246,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Additionally, I performed lemmatization on the text, which reduces words to their base or root forms. This consolidates similar words and reduces dimensionality, improving the model’s ability to generalize across different variations of words. For instance, words like “running,” “ran,” and “runs” are all reduced to the base form “run.”</p>
 <p>By applying these text preprocessing techniques, I transformed the raw tweet data into a clean and standardized format. This preparation is crucial for accurate sentiment analysis as it helps to eliminate noise, reduce dimensionality, and concentrate on the most relevant text features. The preprocessed tweets are now ready for further analysis and sentiment classification using suitable models.</p>
 <p>Before creating the preprocessing function, it’s essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.</p>
-<div id="93acb20f" class="cell" data-execution_count="1">
+<div id="44a57bd1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -270,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [nltk_data]     /Users/solomoneshun/nltk_data...
 [nltk_data]   Package wordnet is already up-to-date!</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>True</code></pre>
 </div>
 </div>
@@ -282,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="defining-the-text-preprocessing-function" class="level3">
 <h3 class="anchored" data-anchor-id="defining-the-text-preprocessing-function">Defining the Text Preprocessing Function</h3>
 <p>The main function, <code>preprocess_text</code>, cleans up the text data by removing unwanted characters, converting text to lowercase, removing stopwords, and lemmatizing the words.</p>
-<div id="d62f3690" class="cell" data-execution_count="2">
+<div id="0b6b12c4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_text(data):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    processed_data <span class="op">=</span> []</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    stop <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))  <span class="co"># Set of English stopwords</span></span>
@@ -310,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Stopwords Removal</strong>: Filters out common words that are unlikely to contribute to sentiment analysis.</li>
 </ul>
 <p>To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.</p>
-<div id="30b23511" class="cell" data-execution_count="3">
+<div id="620027a4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> [<span class="st">"Wow! This place is amazing.. Visit @ 100% times; best meals ever!! :)"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cleaned_text <span class="op">=</span> preprocess_text(sample_text)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cleaned_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -322,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="creating-a-larger-dataframe-and-cleaning-texts" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-larger-dataframe-and-cleaning-texts">Creating a Larger DataFrame and Cleaning Texts</h3>
 <p>Next, we create a larger DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.</p>
-<div id="9112817b" class="cell" data-execution_count="4">
+<div id="ebec80fd" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating sample data</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Review'</span>: [</span>
@@ -346,7 +352,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying the text preprocessing function</span></span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>reviews_df[<span class="st">'Cleaned_Review'</span>] <span class="op">=</span> preprocess_text(reviews_df[<span class="st">'Review'</span>].tolist())</span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>reviews_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <div>
 
