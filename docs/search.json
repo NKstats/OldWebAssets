@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "NKstats",
+    "section": "",
+    "text": "Welcome to the NKstats Blog! Explore our latest posts below.\n\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nStill Working2!\n\n\n\nstatistics\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nMay 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStill working!\n\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nApr 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCleaning Text Data in Python\n\n\n\nprogramming\n\n\n\nA guide to pre-processing text data for sentiment analysis in Python.\n\n\n\nSolomon Eshun\n\n\nApr 11, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "Readme.html",
     "href": "Readme.html",
     "title": "<<<<<<< HEAD",
@@ -7,18 +14,11 @@
     "text": "&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\n\n\n\n\n\n\n\n6e566f9dd1699045ba8fe7ac06b9bb05071f6302"
   },
   {
-    "objectID": "Readme.html#what-to-include-in-this-blog",
-    "href": "Readme.html#what-to-include-in-this-blog",
-    "title": "NKstats",
-    "section": "What to Include in This Blog",
-    "text": "What to Include in This Blog\nAs you prepare your introductions please make sure to include the following information about yourself. Feel free to add any pictures and links you think would make the blogs more presentable.\n\nWhere are you from?\nWhat’s your current academic year?\nWhat degrees are you studying? Why did you choose your degrees?\nWhat are your plans with your degree(s)?\nWhy do you care about data science?\nDo you have any prior experience with data science?\nWhat kinds of extracurricular activities / hobbies do you care about?\nShare an interesting fact/story about yourself. What do you want your peers to know about you?\n\nIt’s also important that you develop some personal learning objectives for your time in DSPG. The following questions below are designed to help you develop some. After thinking through them, include your answers within the blog so that we can revisit these at the end of the program.\n\nWhat skills do you value and appreciate about yourself?\nList some skills in data science that you feel you do well.\nList at least three skills you would like to learn or develop during the DSPG program.\nWhy are you pursuing these skills? Why do they matter to you?\nHow do you hope to improve these skills?"
-  },
-  {
-    "objectID": "Readme.html#before-submitting-your-assignment",
-    "href": "Readme.html#before-submitting-your-assignment",
-    "title": "NKstats",
-    "section": "Before Submitting Your Assignment",
-    "text": "Before Submitting Your Assignment\n\nPlease update everything except the categories: [Introduction] in the YAML metadata section of your NAME_Introductions.qmd file.\nReplace the NAME section of the NAME_Introductions.qmd file with your first name.\nIf you are including any images, place them in the imgs\\ folder and follow the guidelines discussed in the Blog Writing Guidelines post for adding images.\nRender the blog post locally on your device to make sure that it can render correctly."
+    "objectID": "write_ups/ex3.html",
+    "href": "write_ups/ex3.html",
+    "title": "Still Working2!",
+    "section": "",
+    "text": "under construction !"
   },
   {
     "objectID": "NKstats.html",
@@ -26,27 +26,6 @@
     "title": "NKstats",
     "section": "",
     "text": "Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University. My site is still under construction ! \n\nMy current research interests include causal inference, infectious disease modeling, data integration and machine learning. I am also interested in exploring high-dimensional inference, semiparametric models, and survival analysis as they apply to electronic health records and clinical trials. I aim to develop robust statistical methods and tools aimed at tackling complex problems in a range of public health issues including infectious diseases, cardiovascular diseases, cancer etc. I am committed to engaging with these topics through continual learning and academic exploration. \n\n\n\n\nResearch Interests\n\nunder construction ...........\n\n\n\n\n\nEducation\n\n\n    \n        PhD (Student) in Applied Mathematics\n        Iowa State University, Ames, 08/2023 - 05/2024\n     \n    \n        MS in Applied Statistics & Data Science\n        University of Texas Rio Grande Valley (UTRGV), Edinburg, 08/2021 - 05/2023\n    \n    \n        BS in Mathematics\n        University of Mines and Technology (UMaT), Ghana, 09/2016 - 08/2020\n    \n\n\n\n\n\n\n\nExperience\n\n\n    \n        Graduate Research Assistant, .......... (08/2024 - Present)\n     \n    \n        Graduate Fellow, Data Science for the Public Good, Iowa State (05/2024 - 07/2024)\n    \n    \n        Graduate Teaching Assistant, Department of Mathematics, Iowa State (08/2023 - 05/2023)\n    \n    \n    \n        Sustainability Research Fellow, Office for Sustainability, UTRGV (08/2022 - 05/2023)\n        \n    \n        Graduate Teaching Assistant, School of Mathematical & Statistical Sciences, UTRGV (08/2021 - 05/2023)\n        \n    \n        Computational Science Intern, Los Alamos National Lab, Los Alamos, NM (05/2022 - 08/2022)\n        \n    \n        Teaching Assistant, Department of Mathematical Sciences, UMaT (09/2020 - 08/2021)\n    \n        \n    \n        Data Production Intern, Ghana Statistical Service, Accra (05/2019 - 08/2019)\n    \n\n\n\n\n\n\nHonors & Awards\n\n\n    \n        The Cole, 1958 & Green Scholarships, 08/2024.\n    \n    \n    \n        Travel Award, Department of Mathematics, Iowa State University, 10/2023.\n    \n    \n    \n        Certificate of Excellence in Sustainable Development Graduate Research, UTRGV, 05/2023.\n    \n    \n    \n        UTRGV Applied Statistics & Data Science Outstanding M.S. Thesis Award, 04/2023.\n    \n    \n    \n        Poster Award, SIPCE 2nd Annual Conference for Interdisciplinary Research, UTRGV, 03/2023.\n    \n    \n    \n        Sustainability Research Fellowship, Office for Sustainability, UTRGV, 08/2022.\n    \n    \n    \n        Burkhart Endowed Scholarship, School of Mathematical & Statistical Sciences, UTRGV, 12/2022.\n    \n    \n    \n        Joseph Wiener Math Scholarship, School of Mathematical & Statistical Sciences, UTRGV, 08/2022.\n    \n    \n    \n        Vice Chancellor's Overall Best Graduating Student, University of Mines & Technology, 08/2020.\n    \n    \n    \n        Best Graduating Student, Faculty of Engineering, University of Mines & Technology, 08/2020.\n    \n    \n    \n        Best Student, Department of Mathematical Sciences, University of Mines & Technology, 08/2020."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "NKstats",
-    "section": "",
-    "text": "Welcome to NKstats! This page provides information about my projects, goals, and background.\nThe full site is under construction …"
-  },
-  {
-    "objectID": "about.html#our-mission",
-    "href": "about.html#our-mission",
-    "title": "About",
-    "section": "",
-    "text": "Our mission is to provide insightful statistical analyses to help inform decision-making processes in various sectors."
-  },
-  {
-    "objectID": "about.html#contact-information",
-    "href": "about.html#contact-information",
-    "title": "About",
-    "section": "",
-    "text": "For more inquiries, please contact us at eshunsolomon5@gmail.com."
   },
   {
     "objectID": "research.html",
@@ -63,41 +42,6 @@
     "text": "Conference Presentations\n\n\n\n\n“Estimating Gender Differences in Glioblastoma Outcomes using Propensity Score Matching” (Oral), 2nd Interdisciplinary Biological Sciences Symposium, Ames, IA, 04/03/2024\n“Investigating Gender Disparities in Glioblastoma via Propensity Score Matching” (Lightning talk & Poster), Boston Pharmaceutical Symposium, Sanofi, Cambridge, MA, 10/13/2023.\n“Equity in Focus: Investigating Gender Disparities in Glioblastoma via Propensity Score Matching” (Poster), Statistics in Pharmaceuticals Conference, University of Connecticut (Virtual), 08/17/2023.\nS. Eshun, T. Oraby, & M. Al-Mamun., “A Machine Learning Approach to Evaluate the Effect of SGLT2 on CKD in Diabetes Patients” (Poster), College of Sciences Annual Research Conference, Brownsville, TX, 04/28/2023.\n“Diagnosing CKD in Type 2 Diabetes Patients: A Machine Learning Approach” (Poster), 9th Annual TRACS Summit, Texas A&M, College Station, TX, 04/03/2023.\n“Diagnosing CKD & Heart Failure in Type 2 Diabetes Patients: A Machine Learning Approach” (Poster), School of Interdisciplinary Programs & Community Engagement (SIPCE) 2nd Annual Conference, Edinburg, TX, 03/30/2023."
   },
   {
-    "objectID": "about.html#recent-posts",
-    "href": "about.html#recent-posts",
-    "title": "NKstats: About Me",
-    "section": "Recent Posts",
-    "text": "Recent Posts\n\nText Data Cleaning for Sentiment Analysis\nA brief overview of how to clean text data for performing sentiment analysis. Read more\n\nA brief overview of how to clean text data for performing sentiment analysis. Read more\n\n\nAnother Post Title\n\nSummary of the post… Read more"
-  },
-  {
-    "objectID": "sentiment.html",
-    "href": "sentiment.html",
-    "title": "Cleaning Text Data in Python for Sentiment Analysis",
-    "section": "",
-    "text": "dghdhshjs"
-  },
-  {
-    "objectID": "sentiment.html#introduction",
-    "href": "sentiment.html#introduction",
-    "title": "Text Data Cleaning for Sentiment Analysis",
-    "section": "Introduction",
-    "text": "Introduction\nText data cleaning is essential…"
-  },
-  {
-    "objectID": "sentiment.html#code-example",
-    "href": "sentiment.html#code-example",
-    "title": "Text Data Cleaning for Sentiment Analysis",
-    "section": "Code Example",
-    "text": "Code Example"
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "NKstats",
-    "section": "",
-    "text": "Welcome to the NKstats Blog! Explore our latest posts below.\n\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nStill Working2!\n\n\n\nstatistics\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nMay 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStill working!\n\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nApr 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCleaning Text Data in Python\n\n\n\nprogramming\n\n\n\nA guide to pre-processing text data for sentiment analysis in Python.\n\n\n\nSolomon Eshun\n\n\nApr 11, 2022\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "write_ups/ex1.html",
     "href": "write_ups/ex1.html",
     "title": "Still working!",
@@ -112,38 +56,10 @@
     "text": "Outline\n\nIntroduction\nPython Implementation\n\n\n\nIntroduction\nIn sentiment analysis, the quality of input data can significantly influence the accuracy and effectiveness of the final outcomes. Analyzing texts, given their concise nature and informal language, presents unique challenges. This blog post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.\n\n\n\nFirst, I removed any URLs from the tweets since they do not contribute to sentiment analysis and only add noise and irrelevant information to the text.\nNext, I tokenized the tweets by splitting them into individual words. Tokenization allows for processing the text at a detailed level, treating each word as a separate entity, which is crucial for the cleaning and analysis that follows.\nAfter tokenization, I applied text cleaning steps to refine the data further. This included removing stopwords—common words like “the,” “and,” “is,” which do not carry significant sentiment information. Eliminating these words helps reduce textual noise and focuses the analysis on more impactful words that convey sentiment.\nI also removed special characters, such as punctuation marks and symbols, from the text. These characters do not aid in sentiment analysis and can hinder the performance of further analyses.\nAdditionally, I performed lemmatization on the text, which reduces words to their base or root forms. This consolidates similar words and reduces dimensionality, improving the model’s ability to generalize across different variations of words. For instance, words like “running,” “ran,” and “runs” are all reduced to the base form “run.”\nBy applying these text preprocessing techniques, I transformed the raw tweet data into a clean and standardized format. This preparation is crucial for accurate sentiment analysis as it helps to eliminate noise, reduce dimensionality, and concentrate on the most relevant text features. The preprocessed tweets are now ready for further analysis and sentiment classification using suitable models.\n\n\nPython codes implementation\nBefore creating the preprocessing function, it’s essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.\n\n# Load Required packages\nimport pandas as pd\nimport numpy as np\nimport nltk, re\nfrom nltk import word_tokenize\nfrom nltk.stem import WordNetLemmatizer\nfrom nltk.corpus import stopwords\n\n# Download necessary NLTK resources\nnltk.download('stopwords')\nnltk.download('punkt')\nnltk.download('wordnet')\n\n[nltk_data] Downloading package stopwords to\n[nltk_data]     /Users/solomoneshun/nltk_data...\n[nltk_data]   Package stopwords is already up-to-date!\n[nltk_data] Downloading package punkt to\n[nltk_data]     /Users/solomoneshun/nltk_data...\n[nltk_data]   Package punkt is already up-to-date!\n[nltk_data] Downloading package wordnet to\n[nltk_data]     /Users/solomoneshun/nltk_data...\n[nltk_data]   Package wordnet is already up-to-date!\n\n\nTrue\n\n\n\nnltk: A toolkit for natural language processing that provides capabilities for tokenizing, stemming, and more.\nre: Helps in removing punctuation and non-alphabetical characters using regular expressions.\nstopwords: Common words in English that do not add much meaning to sentences and are often removed in the preprocessing step (eg. is, the, a, and, an, …).\n\n\n\nDefining the Text Preprocessing Function\nThe main function, preprocess_text, cleans up the text data by removing unwanted characters, converting text to lowercase, removing stopwords, and lemmatizing the words.\n\ndef preprocess_text(data):\n    processed_data = []\n    stop = set(stopwords.words('english'))  # Set of English stopwords\n\n    for k in range(len(data)):\n        # Remove non-alphabet characters and convert to lowercase\n        review = re.sub('[^a-zA-Z]', ' ', data[k]).lower().split()\n\n        # Lemmatize words and remove stopwords\n        stem_list = [WordNetLemmatizer().lemmatize(i) for i in review if not i in stop]\n\n        # Rejoin words to form the final cleaned text\n        final_text = ' '.join(stem_list)\n        processed_data.append(final_text)\n\n    return(processed_data)\n\n\n\nSteps Explained:\n\nRegular Expression: re.sub('[^a-zA-Z]', ' ', data[k]) removes any character that is not a letter.\nLowercasing & Splitting: Converts the text to lowercase and splits into individual words.\nLemmatization: Reduces words to their base or root form.\nStopwords Removal: Filters out common words that are unlikely to contribute to sentiment analysis.\n\nTo demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.\n\nsample_text = [\"Wow! This place is amazing.. Visit @ 100% times; best meals ever!! :)\"]\ncleaned_text = preprocess_text(sample_text)\nprint(cleaned_text)\n\n['wow place amazing visit time best meal ever']\n\n\n\n\nCreating a Larger DataFrame and Cleaning Texts\nNext, we create a larger DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.\n\n# Generating sample data\ndata = {\n    'Review': [\n        \"Love this place, will come again!\", \"Not clean, very bad experience!\",\n        \"Best experience ever, highly recommend!\", \"Worst place I have been to!\",\n        \"Just okay, nothing special.\", \"Fantastic service and food!\",\n        \"Would not recommend this place to anyone.\", \"Great location, mediocre food.\",\n        \"Terrible customer service.\", \"Amazing atmosphere, will return!\",\n        \"Overpriced for the quality.\", \"Perfect spot for a weekend getaway!\",\n        \"Dirty rooms and rude staff.\", \"Exceptional service and amenities!\",\n        \"Too noisy and crowded.\", \"Peaceful and relaxing environment.\",\n        \"Unfriendly staff and bad food.\", \"Loved the outdoor setting!\",\n        \"Cancellation policy is too strict.\", \"Excellent choice for families!\"\n    ],\n    'Rating': [5, 1, 5, 1, 3, 5, 1, 3, 1, 5, 2, 5, 1, 5, 2, 4, 1, 4, 2, 5]\n}\n\n# Creating the DataFrame\nreviews_df = pd.DataFrame(data)\n\n# Applying the text preprocessing function\nreviews_df['Cleaned_Review'] = preprocess_text(reviews_df['Review'].tolist())\nreviews_df\n\n\n\n\n\n\n\n\n\nReview\nRating\nCleaned_Review\n\n\n\n\n0\nLove this place, will come again!\n5\nlove place come\n\n\n1\nNot clean, very bad experience!\n1\nclean bad experience\n\n\n2\nBest experience ever, highly recommend!\n5\nbest experience ever highly recommend\n\n\n3\nWorst place I have been to!\n1\nworst place\n\n\n4\nJust okay, nothing special.\n3\nokay nothing special\n\n\n5\nFantastic service and food!\n5\nfantastic service food\n\n\n6\nWould not recommend this place to anyone.\n1\nwould recommend place anyone\n\n\n7\nGreat location, mediocre food.\n3\ngreat location mediocre food\n\n\n8\nTerrible customer service.\n1\nterrible customer service\n\n\n9\nAmazing atmosphere, will return!\n5\namazing atmosphere return\n\n\n10\nOverpriced for the quality.\n2\noverpriced quality\n\n\n11\nPerfect spot for a weekend getaway!\n5\nperfect spot weekend getaway\n\n\n12\nDirty rooms and rude staff.\n1\ndirty room rude staff\n\n\n13\nExceptional service and amenities!\n5\nexceptional service amenity\n\n\n14\nToo noisy and crowded.\n2\nnoisy crowded\n\n\n15\nPeaceful and relaxing environment.\n4\npeaceful relaxing environment\n\n\n16\nUnfriendly staff and bad food.\n1\nunfriendly staff bad food\n\n\n17\nLoved the outdoor setting!\n4\nloved outdoor setting\n\n\n18\nCancellation policy is too strict.\n2\ncancellation policy strict\n\n\n19\nExcellent choice for families!\n5\nexcellent choice family"
   },
   {
-    "objectID": "write_ups/ex3.html",
-    "href": "write_ups/ex3.html",
-    "title": "Still Working2!",
-    "section": "",
-    "text": "under construction !"
-  },
-  {
-    "objectID": "layout.html",
-    "href": "layout.html",
+    "objectID": "about.html",
+    "href": "about.html",
     "title": "NKstats",
     "section": "",
-    "text": "&lt;!DOCTYPE html&gt;\n\n\n\n\n\n{{ title }}\n\n{{ block head }}  {{ endblock }}\n\n\n\n\n\n\n\n\n  &lt;!-- Custom filter UI --&gt;\n&lt;/div&gt;\n&lt;div id=\"sorters\"&gt;\n  &lt;!-- Custom sort UI --&gt;\n&lt;/div&gt;\n\n&lt;!-- Content list generated by Quarto --&gt;\n{{ content }}\n\n\n\n\n{{ block scripts }}  {{ endblock }}"
-  },
-  {
-    "objectID": "write_ups/ex2.html#key-components",
-    "href": "write_ups/ex2.html#key-components",
-    "title": "Cleaning Text Data in Python",
-    "section": "Key Components:",
-    "text": "Key Components:\n\nnltk: A toolkit for natural language processing that provides capabilities for tokenizing, stemming, and more.\nre: Helps in removing punctuation and non-alphabetical characters using regular expressions.\nstopwords: Common words in English that do not add much meaning to sentences and are often removed in the preprocessing step."
-  },
-  {
-    "objectID": "write_ups/ex2.html#steps-explained",
-    "href": "write_ups/ex2.html#steps-explained",
-    "title": "Cleaning Text Data in Python",
-    "section": "Steps Explained:",
-    "text": "Steps Explained:\n\nRegular Expression: re.sub('[^a-zA-Z]', ' ', data[k]) removes any character that is not a letter.\nLowercasing & Splitting: Converts the text to lowercase and splits into individual words.\nLemmatization: Reduces words to their base or root form.\nStopwords Removal: Filters out common words that are unlikely to contribute to sentiment analysis."
-  },
-  {
-    "objectID": "write_ups/ex2.html#output-explanation",
-    "href": "write_ups/ex2.html#output-explanation",
-    "title": "Cleaning Text Data in Python",
-    "section": "Output Explanation:",
-    "text": "Output Explanation:\nThis will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized."
+    "text": "Welcome to NKstats! This page provides information about my projects, goals, and background.\nThe full site is under construction …"
   }
 ]
