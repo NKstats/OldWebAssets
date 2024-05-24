@@ -57,11 +57,11 @@ details[open] > summary:before {
 
 <br>
 
-Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University. My site is still under construction ! <!-- I am a PhD student -->
+Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University.
 
-<!-- <div class="justify-text"> -->
-My current research interests include causal inference, infectious disease modeling, data integration and machine learning. I am also interested in exploring high-dimensional inference, semiparametric models, and survival analysis as they apply to electronic health records and clinical trials. I aim to develop robust statistical methods and tools aimed at tackling complex problems in a range of public health issues including infectious diseases, cardiovascular diseases, cancer etc. I am committed to engaging with these topics through continual learning and academic exploration.
-<!-- </div> -->
+I am dedicated to developing statistical methods and tools that address public health challenges. My goal is to master methodologies that can identify the most effective treatments and interventions by analyzing data from observational studies, clinical trials and other sources. I am particularly interested in statistical frameworks that differentiate between correlations and causality, and in applying causal approaches to personalize treatments for individuals within a diverse population, acknowledging the heterogeneity inherent in health datasets. Additionaly, I am interested in looking into the dynamics of infectious disease transmission by developing mathematical and statistical models to simulate the spread of diseases and assess the potential impact of strategies like vaccination, quarantine, social distancing, etc., to control disease spread. 
+
+
 
 <div style="height: 10px;"></div>
 
@@ -69,7 +69,17 @@ My current research interests include causal inference, infectious disease model
 <details>
 <summary style="color: #333333; font-size: 20px;"><strong>Research Interests</strong></summary>
 <div style="height: 10px;"></div>
-under construction ...........
+<ul>
+    <li>
+        Causal Inference
+    </li> <div style="height: 10px;"></div>
+    <li>
+        Precision Medicine
+    </li><div style="height: 10px;"></div>
+    <li>
+        Infectious Disease Modeling
+    </li>
+</ul>
 </details>
 ```
 
@@ -82,15 +92,15 @@ under construction ...........
 <ul>
     <li>
         <strong>PhD (Student) in Applied Mathematics</strong><br>
-        Iowa State University, Ames, 08/2023 - 05/2024
+        Iowa State University, Ames, 2023 - 2024
     </li> <div style="height: 10px;"></div>
     <li>
         <strong>MS in Applied Statistics & Data Science</strong><br>
-        University of Texas Rio Grande Valley (UTRGV), Edinburg, 08/2021 - 05/2023
+        University of Texas Rio Grande Valley (UTRGV), Edinburg, 2023
     </li><div style="height: 10px;"></div>
     <li>
         <strong>BS in Mathematics</strong><br>
-        University of Mines and Technology (UMaT), Ghana, 09/2016 - 08/2020
+        University of Mines and Technology (UMaT), Ghana, 2020
     </li>
 </ul>
 </details>
@@ -146,47 +156,47 @@ under construction ...........
 <div style="height: 10px;"></div>
 <ul>
     <li>
-        The Cole, 1958 & Green Scholarships, 08/2024.
+        The Cole, 1958 & Green Scholarships, 2024.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Travel Award, Department of Mathematics, Iowa State University, 10/2023.
+        Travel Award, Department of Mathematics, Iowa State University, 2023.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Certificate of Excellence in Sustainable Development Graduate Research, UTRGV, 05/2023.
+        Certificate of Excellence in Sustainable Development Graduate Research, UTRGV, 2023.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        UTRGV Applied Statistics & Data Science Outstanding M.S. Thesis Award, 04/2023.
+        UTRGV Applied Statistics & Data Science Outstanding M.S. Thesis Award, 2023.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Poster Award, SIPCE 2<sup>nd</sup> Annual Conference for Interdisciplinary Research, UTRGV, 03/2023.
+        Poster Award, SIPCE 2<sup>nd</sup> Annual Conference for Interdisciplinary Research, UTRGV, 2023.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Sustainability Research Fellowship, Office for Sustainability, UTRGV, 08/2022.
+        Sustainability Research Fellowship, Office for Sustainability, UTRGV, 2022.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Burkhart Endowed Scholarship, School of Mathematical & Statistical Sciences, UTRGV, 12/2022.
+        Burkhart Endowed Scholarship, School of Mathematical & Statistical Sciences, UTRGV, 2022.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Joseph Wiener Math Scholarship, School of Mathematical & Statistical Sciences, UTRGV, 08/2022.
+        Joseph Wiener Math Scholarship, School of Mathematical & Statistical Sciences, UTRGV, 2022.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Vice Chancellor's Overall Best Graduating Student, University of Mines & Technology, 08/2020.
+        Vice Chancellor's Overall Best Graduating Student, University of Mines & Technology, 2020.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Best Graduating Student, Faculty of Engineering, University of Mines & Technology, 08/2020.
+        Best Graduating Student, Faculty of Engineering, University of Mines & Technology, 2020.
     </li>
     <div style="height: 10px;"></div>
     <li>
-        Best Student, Department of Mathematical Sciences, University of Mines & Technology, 08/2020.
+        Best Student, Department of Mathematical Sciences, University of Mines & Technology, 2020.
     </li>
 </ul>
 </details>
