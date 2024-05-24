@@ -32,7 +32,7 @@
     "href": "about.html",
     "title": "NKstats",
     "section": "",
-    "text": "Welcome to NKstats! This page provides information about my projects, goals, and background.\nThe full site is under construction…\n\nSample Python Execution\nBelow is an example of Python code that cleans text data for sentiment analysis.\n\n# Importing necessary library\nimport numpy as np\n\n# Generating random data\ndata = np.random.rand(5)\n\n# Output the data\ndata\n\narray([0.04696297, 0.08629909, 0.69852614, 0.12777181, 0.08342805])\n\n\nBelow is an example of Python code that cleans text data for sentiment analysis.\n\nimport numpy as np\nimport pandas as pd\nimport nltk\nfrom nltk.stem import PorterStemmer\nfrom nltk.corpus import stopwords\nfrom nltk import word_tokenize\nimport re\nimport sklearn\nfrom sklearn.preprocessing import normalize\nfrom nltk.stem import SnowballStemmer\n\nnltk.download('punkt')\nnltk.download('stopwords')\n\n\n\nstop_add = ['i', 'u', 'ur', 'uve', 'ive', 'im', 'your',\n            \"i've\",\"i'll\", 'am,','us', 'dont', 'must',\n            'one', 'also', 'r', 'vr', 'n', 'mani',\n            'sooo', 'go', 'rli', 'oh']\n\nsw_nltk = stopwords.words('english')\n\nstop_add += sw_nltk\n\n\ndef Preprocess(data_to_clean):\n\n    data_w1 = []\n    ps = PorterStemmer()\n\n    for i in range(0,len(data_to_clean)):\n\n        review_data = re.sub('[^a-zA-Z]', ' ', data_to_clean[i]).lower().split()\n\n\n        stem_list = [ps.stem(k) for k in review_data if not k\n                     in set(stopwords.words('english'))]\n\n        for word in stem_list:\n          if word in stop_add:\n            stem_list.remove(word)\n\n        strf = ' '.join(stem_list)\n        data_w1.append(strf)\n\n    return(data_w1)\n\n[nltk_data] Downloading package punkt to\n[nltk_data]     /Users/solomoneshun/nltk_data...\n[nltk_data]   Package punkt is already up-to-date!\n[nltk_data] Downloading package stopwords to\n[nltk_data]     /Users/solomoneshun/nltk_data...\n[nltk_data]   Package stopwords is already up-to-date!"
+    "text": "Welcome to NKstats! This page provides information about my projects, goals, and background.\nThe full site is under construction …"
   },
   {
     "objectID": "about.html#our-mission",
@@ -95,14 +95,14 @@
     "href": "blog.html",
     "title": "NKstats",
     "section": "",
-    "text": "Welcome to the NKstats Blog! Explore our latest posts below.\n\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nCleaning Text Data in Python\n\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nApr 11, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStill working!\n\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nApr 21, 2021\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStill Working2!\n\n\n\nstatistics\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nApr 21, 2021\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the NKstats Blog! Explore our latest posts below.\n\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nStill Working2!\n\n\n\nstatistics\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nMay 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStill working!\n\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nApr 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCleaning Text Data in Python\n\n\n\nprogramming\n\n\n\n\n\n\n\nSolomon Eshun\n\n\nApr 11, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "write_ups/ex1.html",
     "href": "write_ups/ex1.html",
     "title": "Still working!",
     "section": "",
-    "text": "dghdhshjs"
+    "text": "under construction !!!"
   },
   {
     "objectID": "write_ups/ex2.html",
