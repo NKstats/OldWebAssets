@@ -59,29 +59,44 @@ details[open] > summary:before {
 
 Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University.
 
-I am dedicated to developing statistical methods and tools that address public health challenges. My goal is to master methodologies that can identify the most effective treatments and interventions by analyzing data from observational studies, clinical trials and other sources. I am particularly interested in statistical frameworks that differentiate between correlations and causality, and in applying causal approaches to personalize treatments for individuals within a diverse population, acknowledging the heterogeneity inherent in health datasets. Additionaly, I am interested in looking into the dynamics of infectious disease transmission by developing mathematical and statistical models to simulate the spread of diseases and assess the potential impact of strategies like vaccination, quarantine, social distancing, etc., to control disease spread. 
-
+I am dedicated to developing statistical methods and tools that address public health challenges. My goal is to master methodologies that can identify the most effective treatments and interventions by analyzing data from observational studies, clinical trials and other sources. I am particularly interested in combining machine learning with causal methods to analyze the effects of policies and interventions on disease outcomes, addressing the challenges posed by heterogeneous patient characteristics and varying medical protocols within healthcare datasets. Additionally, I am interested in exploring the dynamics of infectious disease transmission by developing mathematical and statistical models to simulate disease spread and evaluate the effectiveness of control strategies.
 
 
 <div style="height: 10px;"></div>
+
+
+<div style="height: 10px;"></div>
+
+<!-- Expand/Collapse All Buttons -->
+<div>
+  <button onclick="expandAll()">Expand All</button>
+  <button onclick="collapseAll()">Collapse All</button>
+</div>
+
+<script>
+function expandAll() {
+  document.querySelectorAll('details').forEach(details => {
+    details.open = true;
+  });
+}
+
+function collapseAll() {
+  document.querySelectorAll('details').forEach(details => {
+    details.open = false;
+  });
+}
+</script>
 
 ```{=html}
 <details>
-<summary style="color: #333333; font-size: 20px;"><strong>Research Interests</strong></summary>
-<div style="height: 10px;"></div>
-<ul>
-    <li>
-        Causal Inference
-    </li> <div style="height: 10px;"></div>
-    <li>
-        Precision Medicine
-    </li><div style="height: 10px;"></div>
-    <li>
-        Infectious Disease Modeling
-    </li>
-</ul>
+    <summary style="color: #333333; font-size: 20px;"><strong>Research Interests</strong></summary>
+    <div style="height: 10px;"></div>
+    <div style="margin-left: 30px;">Causal Inference, Precision Medicine, Machine Learning, Infectious Disease Modeling</div>
 </details>
+
 ```
+
+
 
 <div style="height: 10px;"></div>
 

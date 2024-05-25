@@ -21,3 +21,49 @@ under construction !!!
 
 
 
+
+
+- exang (Exercise Induced Angina): This variable is binary (1 = yes, 0 = no) and indicates whether the patient experienced angina (chest pain) induced by exercise. It is a good candidate for a treatment variable because angina can be considered as an "event" or "condition" whose impact on other health outcomes can be assessed.
+
+- num (Diagnosis of Heart Disease): This is the outcome variable and is already coded as 0 = no presence and 1-4 indicating different types of defects (often, any value > 0 is considered as presence of disease). This variable can be used to determine the effect of exercise-induced angina on the presence of heart disease.
+
+
+```{python}
+
+import pandas as pd
+
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"
+# Column names based on the dataset documentation
+column_names = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg',
+                'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal', 'num']
+
+# Load the dataset
+df = pd.read_csv(url, names=column_names)
+
+import pandas as pd
+
+# Assuming df is already loaded with the heart disease data
+# Convert 'num' to binary: 0 indicates no heart disease, 1-4 are converted to 1 indicating presence of heart disease
+df['num'] = (df['num'] > 0).astype(int)
+
+# Verify the changes
+print(df['num'].value_counts())
+
+
+# Check the first few rows of the dataframe
+print(df.shape)
+
+import numpy as np
+
+# Replace '?' with NaN
+df.replace('?', np.nan, inplace=True)
+
+# Option to drop rows with NaN
+df.dropna(inplace=True)
+
+print(df.shape)
+
+
+df
+```
+

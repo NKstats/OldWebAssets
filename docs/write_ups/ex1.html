@@ -23,10 +23,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,6 +103,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -200,6 +237,275 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>under construction !!!</p>
+<ul>
+<li><p>exang (Exercise Induced Angina): This variable is binary (1 = yes, 0 = no) and indicates whether the patient experienced angina (chest pain) induced by exercise. It is a good candidate for a treatment variable because angina can be considered as an “event” or “condition” whose impact on other health outcomes can be assessed.</p></li>
+<li><p>num (Diagnosis of Heart Disease): This is the outcome variable and is already coded as 0 = no presence and 1-4 indicating different types of defects (often, any value &gt; 0 is considered as presence of disease). This variable can be used to determine the effect of exercise-induced angina on the presence of heart disease.</p></li>
+</ul>
+<div id="75634c2a" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Column names based on the dataset documentation</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>column_names <span class="op">=</span> [<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'cp'</span>, <span class="st">'trestbps'</span>, <span class="st">'chol'</span>, <span class="st">'fbs'</span>, <span class="st">'restecg'</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">'thalach'</span>, <span class="st">'exang'</span>, <span class="st">'oldpeak'</span>, <span class="st">'slope'</span>, <span class="st">'ca'</span>, <span class="st">'thal'</span>, <span class="st">'num'</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url, names<span class="op">=</span>column_names)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming df is already loaded with the heart disease data</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 'num' to binary: 0 indicates no heart disease, 1-4 are converted to 1 indicating presence of heart disease</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'num'</span>] <span class="op">=</span> (df[<span class="st">'num'</span>] <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify the changes</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[<span class="st">'num'</span>].value_counts())</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the first few rows of the dataframe</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.shape)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace '?' with NaN</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>df.replace(<span class="st">'?'</span>, np.nan, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Option to drop rows with NaN</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.shape)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>num
+0    164
+1    139
+Name: count, dtype: int64
+(303, 14)
+(297, 14)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">cp</th>
+<th data-quarto-table-cell-role="th">trestbps</th>
+<th data-quarto-table-cell-role="th">chol</th>
+<th data-quarto-table-cell-role="th">fbs</th>
+<th data-quarto-table-cell-role="th">restecg</th>
+<th data-quarto-table-cell-role="th">thalach</th>
+<th data-quarto-table-cell-role="th">exang</th>
+<th data-quarto-table-cell-role="th">oldpeak</th>
+<th data-quarto-table-cell-role="th">slope</th>
+<th data-quarto-table-cell-role="th">ca</th>
+<th data-quarto-table-cell-role="th">thal</th>
+<th data-quarto-table-cell-role="th">num</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>63.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>145.0</td>
+<td>233.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>150.0</td>
+<td>0.0</td>
+<td>2.3</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>6.0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>67.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>160.0</td>
+<td>286.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>108.0</td>
+<td>1.0</td>
+<td>1.5</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>67.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>120.0</td>
+<td>229.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>129.0</td>
+<td>1.0</td>
+<td>2.6</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>7.0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>37.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>130.0</td>
+<td>250.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>187.0</td>
+<td>0.0</td>
+<td>3.5</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>3.0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>41.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>130.0</td>
+<td>204.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>172.0</td>
+<td>0.0</td>
+<td>1.4</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>3.0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">297</td>
+<td>57.0</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>140.0</td>
+<td>241.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>123.0</td>
+<td>1.0</td>
+<td>0.2</td>
+<td>2.0</td>
+<td>0.0</td>
+<td>7.0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">298</td>
+<td>45.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>110.0</td>
+<td>264.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>132.0</td>
+<td>0.0</td>
+<td>1.2</td>
+<td>2.0</td>
+<td>0.0</td>
+<td>7.0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">299</td>
+<td>68.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>144.0</td>
+<td>193.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>141.0</td>
+<td>0.0</td>
+<td>3.4</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>7.0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">300</td>
+<td>57.0</td>
+<td>1.0</td>
+<td>4.0</td>
+<td>130.0</td>
+<td>131.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>115.0</td>
+<td>1.0</td>
+<td>1.2</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>7.0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">301</td>
+<td>57.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>130.0</td>
+<td>236.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>174.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>297 rows × 14 columns</p>
+</div>
+</div>
+</div>
+</div>
 
 
 
