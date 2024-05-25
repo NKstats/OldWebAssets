@@ -59,6 +59,7 @@ import nltk, re
 from nltk import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
+import emoji
 
 # Download necessary NLTK resources
 nltk.download('stopwords')
@@ -75,26 +76,38 @@ nltk.download('wordnet')
 
 The main function, `preprocess_text`, cleans up the text data by removing unwanted characters, converting text to lowercase, removing stopwords, and lemmatizing the words.
 
+
 ```{python}
 
 def preprocess_text(data):
+  
     processed_data = []
     stop = set(stopwords.words('english'))  # Set of English stopwords
 
     for k in range(len(data)):
+
+        # Remove URLs
+        text = re.sub(r'https?://\S+|www\.\S+', '', data[k])
+
+        # Remove emojis using the emoji library
+        text = emoji.replace_emoji(text, replace='')
+
         # Remove non-alphabet characters and convert to lowercase
-        review = re.sub('[^a-zA-Z]', ' ', data[k]).lower().split()
+        text = re.sub('[^a-zA-Z]', ' ', text).lower().split()
 
         # Lemmatize words and remove stopwords
-        stem_list = [WordNetLemmatizer().lemmatize(i) for i in review if not i in stop]
+        lemmatizer = WordNetLemmatizer()
+        stem_list = [lemmatizer.lemmatize(i) for i in text if i not in stop]
 
         # Rejoin words to form the final cleaned text
         final_text = ' '.join(stem_list)
         processed_data.append(final_text)
 
-    return(processed_data)
+    return processed_data
   
 ```
+
+
 
 ### Steps Explained:
 - **Regular Expression**: `re.sub('[^a-zA-Z]', ' ', data[k])` removes any character that is not a letter.
@@ -107,9 +120,12 @@ def preprocess_text(data):
 To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.
 
 ```{python}
-sample_text = ["Wow! This place is amazing.. Visit @ 100% times; best meals ever!! :)"]
+
+# Sample input text
+sample_text = ["This place is amazing 😊👍 .. @ 100% Check: https://example.com!! :)"]
 cleaned_text = preprocess_text(sample_text)
 print(cleaned_text)
+
 ```
 
 
@@ -122,9 +138,9 @@ Next, we create a larger DataFrame with 20 sample reviews, ratings, and IDs, and
 # Generating sample data
 data = {
     'Review': [
-        "Love this place, will come again!", "Not clean, very bad experience!",
+        "Love this place, will come again!👍", "Not coming again! very bad experience!😡",
         "Best experience ever, highly recommend!", "Worst place I have been to!",
-        "Just okay, nothing special.", "Fantastic service and food!",
+        "Just okay, nothing special.🙂", "Fantastic service and food!",
         "Would not recommend this place to anyone.", "Great location, mediocre food.",
         "Terrible customer service.", "Amazing atmosphere, will return!",
         "Overpriced for the quality.", "Perfect spot for a weekend getaway!",
