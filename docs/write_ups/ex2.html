@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2022-04-11">
 <meta name="description" content="A guide to pre-processing text data for sentiment analysis in Python.">
 
-<title>NKstats - Cleaning Text Data in Python</title>
+<title>NKstats - Text Preprocessing for Sentiment Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cleaning Text Data in Python</h1>
+<h1 class="title">Text Preprocessing for Sentiment Analysis</h1>
   <div class="quarto-categories">
     <div class="quarto-category">programming</div>
   </div>
@@ -239,142 +239,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div style="height: 20px;">
 
 </div>
-<section id="outline" class="level3">
-<h3 class="anchored" data-anchor-id="outline">Outline</h3>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
 <ol type="1">
-<li><a href="#Introduction-1">Introduction</a></li>
+<li><a href="#Introduction-1">Introduction &amp; Method</a></li>
 <li><a href="#Python-codes-implementation">Python Implementation</a></li>
 </ol>
 </section>
-<section id="Introduction-1" class="level3">
-<h3 class="anchored" data-anchor-id="Introduction-1">Introduction</h3>
-<p>In sentiment analysis, the quality of input data can significantly influence the accuracy and effectiveness of the final outcomes. Analyzing texts, given their concise nature and informal language, presents unique challenges. This blog post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.</p>
+<section id="Introduction-1" class="level2">
+<h2 class="anchored" data-anchor-id="Introduction-1">Introduction &amp; Method</h2>
+<p>Sentiment analysis is a critical component of natural language processing (NLP) that helps decipher the emotional tone behind words. This analysis is particularly valuable not only in social media monitoring and market research but also in public health initiatives. Understanding public sentiment can significantly enhance health communication strategies, patient engagement, and policy formulation. Moreover, in public health crises, sentiment analysis can help track community reactions to health advisories or public sentiment toward vaccination drives, thus informing more targeted health communication and intervention strategies. However, the effectiveness of sentiment analysis in these sensitive areas is heavily reliant on the quality of preprocessing applied to text data. This post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.</p>
 <div style="text-align: center;">
-<p><img src="../imgs/senti.png" width="85%"></p>
+<p><img src="../imgs/Fig1.png" width="85%"></p>
 </div>
-<p>First, I removed any URLs from the tweets since they do not contribute to sentiment analysis and only add noise and irrelevant information to the text.</p>
-<p>Next, I tokenized the tweets by splitting them into individual words. Tokenization allows for processing the text at a detailed level, treating each word as a separate entity, which is crucial for the cleaning and analysis that follows.</p>
-<p>After tokenization, I applied text cleaning steps to refine the data further. This included removing stopwords—common words like “the,” “and,” “is,” which do not carry significant sentiment information. Eliminating these words helps reduce textual noise and focuses the analysis on more impactful words that convey sentiment.</p>
-<p>I also removed special characters, such as punctuation marks and symbols, from the text. These characters do not aid in sentiment analysis and can hinder the performance of further analyses.</p>
-<p>Additionally, I performed lemmatization on the text, which reduces words to their base or root forms. This consolidates similar words and reduces dimensionality, improving the model’s ability to generalize across different variations of words. For instance, words like “running,” “ran,” and “runs” are all reduced to the base form “run.”</p>
-<p>By applying these text preprocessing techniques, I transformed the raw tweet data into a clean and standardized format. This preparation is crucial for accurate sentiment analysis as it helps to eliminate noise, reduce dimensionality, and concentrate on the most relevant text features. The preprocessed tweets are now ready for further analysis and sentiment classification using suitable models.</p>
+<p>Here’s a detailed breakdown of the preprocessing techniques I employed to refine the raw tweet data:</p>
+<ol type="1">
+<li><p><u>URL Removal</u>: I began by stripping URLs from the texts. URLs usually don’t contribute to sentiment and can add irrelevant noise to the text, so removing them helps in focusing on meaningful content.</p></li>
+<li><p><u>Tokenization</u>: Next, I tokenized the text by splitting the texts into individual words. This is crucial as it allows us to process the text at the word level, which is essential for the subsequent cleaning and analysis steps.</p></li>
+<li><p><u>Removing Stopwords</u>: I then removed stopwords - common words such as “the,” “and,” “is,” etc., which are abundant in English but do not carry significant sentiment. Eliminating these words helps reduce textual noise and focuses the analysis on more impactful words that convey sentiment.</p></li>
+<li><p><u>Eliminating Special Characters</u>: I also scrubbed the text of special characters like punctuation marks, symbols and emojis. These characters do not typically contribute to sentiment and can impede the performance of sentiment analysis models.</p></li>
+<li><p><u>Lemmatization</u>: Finally, I applied lemmatization to consolidate similar words to their base or dictionary forms. Unlike stemming, which simply chops off the ends of words to reach a common base, lemmatization considers the context and morphological analysis of words to accurately transform them to their lemma. This process reduces the number of unique words the model must handle, enhancing its ability to generalize across different variations of the same word.</p></li>
+</ol>
+<p>Through these text preprocessing steps, I transformed the raw text data into a clean and standardized format. This preparation is vital for conducting accurate sentiment analysis as it helps eliminate noise, reduce the complexity of the data, and focus on the most impactful elements of the text. The preprocessed texts are now ready for further analysis and can be effectively used in sentiment classification models to understand public sentiment.</p>
 </section>
-<section id="Python-codes-implementation" class="level3">
-<h3 class="anchored" data-anchor-id="Python-codes-implementation">Python codes implementation</h3>
+<section id="Python-codes-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="Python-codes-implementation">Python Implementation</h2>
 <p>Before creating the preprocessing function, it’s essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.</p>
-<div id="df4500fc" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk, re</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk <span class="im">import</span> word_tokenize</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> WordNetLemmatizer</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> emoji</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Download necessary NLTK resources</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'wordnet'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>[nltk_data] Downloading package stopwords to
-[nltk_data]     /Users/solomoneshun/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-[nltk_data] Downloading package punkt to
-[nltk_data]     /Users/solomoneshun/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package wordnet to
-[nltk_data]     /Users/solomoneshun/nltk_data...
-[nltk_data]   Package wordnet is already up-to-date!</code></pre>
+<div id="f7072a37" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the emoji package before loading</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install emoji</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="52">
-<pre><code>True</code></pre>
+<div id="3bbea665" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required packages</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk, re, emoji, spacy</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.stem <span class="im">import</span> WordNetLemmatizer</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Download necessary NLTK resources</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'wordnet'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div style="height: 20px;">
+
 </div>
-<ul>
-<li><strong>nltk</strong>: A toolkit for natural language processing that provides capabilities for tokenizing, stemming, and more.</li>
-<li><strong>re</strong>: Helps in removing punctuation and non-alphabetical characters using regular expressions.</li>
-<li><strong>stopwords</strong>: Common words in English that do not add much meaning to sentences and are often removed in the preprocessing step (eg. is, the, a, and, an, …).</li>
-</ul>
-</section>
-<section id="defining-the-text-preprocessing-function" class="level3">
-<h3 class="anchored" data-anchor-id="defining-the-text-preprocessing-function">Defining the Text Preprocessing Function</h3>
-<p>The main function, <code>preprocess_text</code>, cleans up the text data by removing unwanted characters, converting text to lowercase, removing stopwords, and lemmatizing the words.</p>
-<div id="375fa678" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_text(data):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    processed_data <span class="op">=</span> []</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    stop <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))  <span class="co"># Set of English stopwords</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove URLs</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> re.sub(<span class="vs">r'https?://\S+|www\.\S+'</span>, <span class="st">''</span>, data[k])</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove emojis using the emoji library</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> emoji.replace_emoji(text, replace<span class="op">=</span><span class="st">''</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove non-alphabet characters and convert to lowercase</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> re.sub(<span class="st">'[^a-zA-Z]'</span>, <span class="st">' '</span>, text).lower().split()</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Lemmatize words and remove stopwords</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        lemmatizer <span class="op">=</span> WordNetLemmatizer()</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        stem_list <span class="op">=</span> [lemmatizer.lemmatize(i) <span class="cf">for</span> i <span class="kw">in</span> text <span class="cf">if</span> i <span class="kw">not</span> <span class="kw">in</span> stop]</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Rejoin words to form the final cleaned text</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        final_text <span class="op">=</span> <span class="st">' '</span>.join(stem_list)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        processed_data.append(final_text)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> processed_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>preprocess_text</code> function below incorporates all the preprocessing steps discussed in the <a href="#Introduction-1">Introduction &amp; Method</a> section. It is structured to be reusable for any text dataset that requires cleaning for sentiment analysis.</p>
+<div id="8d3b2245" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the spaCy model</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>nlp <span class="op">=</span> spacy.load(<span class="st">"en_core_web_sm"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_text(data):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    processed_data <span class="op">=</span> []</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set of English stopwords</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    stop <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> sentence <span class="kw">in</span> data:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove URLs</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> re.sub(<span class="vs">r'https?://\S+|www\.\S+'</span>, <span class="st">''</span>, sentence)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remove emojis using the emoji library</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> emoji.replace_emoji(text, replace<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create spaCy doc object</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        doc <span class="op">=</span> nlp(text)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        lem_list <span class="op">=</span> []</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> token <span class="kw">in</span> doc:</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> token.is_alpha <span class="kw">and</span> token.text.lower() <span class="kw">not</span> <span class="kw">in</span> stop:  <span class="co"># Check if token is alphabetic and not a stopword</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> token.pos_ <span class="op">!=</span> <span class="st">"PRON"</span>:  <span class="co"># Exclude all pronouns</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                    lem_list.append(token.lemma_.lower())</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Rejoin words to form the final cleaned text</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        final_text <span class="op">=</span> <span class="st">' '</span>.join(lem_list)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        processed_data.append(final_text)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> processed_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="steps-explained" class="level3">
-<h3 class="anchored" data-anchor-id="steps-explained">Steps Explained:</h3>
-<ul>
-<li><strong>Regular Expression</strong>: <code>re.sub('[^a-zA-Z]', ' ', data[k])</code> removes any character that is not a letter.</li>
-<li><strong>Lowercasing &amp; Splitting</strong>: Converts the text to lowercase and splits into individual words.</li>
-<li><strong>Lemmatization</strong>: Reduces words to their base or root form.</li>
-<li><strong>Stopwords Removal</strong>: Filters out common words that are unlikely to contribute to sentiment analysis.</li>
-</ul>
+<div style="height: 20px;">
+
+</div>
 <p>To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.</p>
-<div id="3d978e17" class="cell" data-execution_count="3">
+<div id="87ccf782" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample input text</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> [<span class="st">"This place is amazing 😊👍 .. @ 100% Check: https://example.com!! :)"</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> [<span class="st">"The pandemic has affected the world.. @100% https://example.com!! :)"</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cleaned_text <span class="op">=</span> preprocess_text(sample_text)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cleaned_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['place amazing check']</code></pre>
+<pre><code>['pandemic affect world']</code></pre>
 </div>
 </div>
-</section>
-<section id="creating-a-larger-dataframe-and-cleaning-texts" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-larger-dataframe-and-cleaning-texts">Creating a Larger DataFrame and Cleaning Texts</h3>
+<div style="height: 20px;">
+
+</div>
 <p>Next, we create a larger DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.</p>
-<div id="1045f4bf" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating sample data</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Review'</span>: [</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Love this place, will come again!👍"</span>, <span class="st">"Not coming again! very bad experience!😡"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Best experience ever, highly recommend!"</span>, <span class="st">"Worst place I have been to!"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Just okay, nothing special.🙂"</span>, <span class="st">"Fantastic service and food!"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Would not recommend this place to anyone."</span>, <span class="st">"Great location, mediocre food."</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Terrible customer service."</span>, <span class="st">"Amazing atmosphere, will return!"</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Overpriced for the quality."</span>, <span class="st">"Perfect spot for a weekend getaway!"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Dirty rooms and rude staff."</span>, <span class="st">"Exceptional service and amenities!"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Too noisy and crowded."</span>, <span class="st">"Peaceful and relaxing environment."</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Unfriendly staff and bad food."</span>, <span class="st">"Loved the outdoor setting!"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Cancellation policy is too strict."</span>, <span class="st">"Excellent choice for families!"</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Rating'</span>: [<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>]</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the DataFrame</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>reviews_df <span class="op">=</span> pd.DataFrame(data)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying the text preprocessing function</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>reviews_df[<span class="st">'Cleaned_Review'</span>] <span class="op">=</span> preprocess_text(reviews_df[<span class="st">'Review'</span>].tolist())</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>reviews_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div id="2362c844" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sample DataFrame with texts</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Review'</span>: [</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lockdown was necessary for our safety, I fully support it! 😊"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"I understand the need but it was too long. 😕"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lockdown completely disrupted my life, it was terrible. 😡"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"It was well-handled and necessary for public health. 🏥"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lockdown helped us control the virus spread. 😷"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"It was too restrictive and unnecessary for so long. 😒"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Not sure if lockdown was the best solution, but we had no choice. 🤷"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"It saved lives, but at a great personal cost to many. 😔"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"The government did what was necessary during the lockdown. 👍"</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lockdown was too harsh and not managed well. 😠"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"It was a good measure, but I hated being stuck at home. 🏠😖"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lockdown was essential but mental health suffered a lot. 🧠💔"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"The benefits outweigh the negatives of the lockdown. ➕➖"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Poor execution made it harder than it should be. 😞"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lockdown was over before it was truly safe to do so. 😨"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"We needed the lockdown to protect vulnerable populations. 🛡️"</span>,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"The economic impact of lockdown was devastating. 💸"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lockdown showed we can take collective action when needed. 🤝"</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"It was necessary, but the government support was insufficient. 💔"</span>,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Lockdown should have been stricter to be more effective. ⚠️"</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Sentiment_Rating'</span>: [<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>]</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the DataFrame</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>reviews_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying the text preprocessing function</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>reviews_df[<span class="st">'Cleaned_Review'</span>] <span class="op">=</span> preprocess_text(reviews_df[<span class="st">'Review'</span>].tolist())</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_colwidth'</span>, <span class="va">None</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>reviews_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <div>
 
@@ -384,130 +379,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">Review</th>
-<th data-quarto-table-cell-role="th">Rating</th>
+<th data-quarto-table-cell-role="th">Sentiment_Rating</th>
 <th data-quarto-table-cell-role="th">Cleaned_Review</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>Love this place, will come again!👍</td>
+<td>Lockdown was necessary for our safety, I fully support it! 😊</td>
 <td>5</td>
-<td>love place come</td>
+<td>lockdown necessary safety fully support</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>Not coming again! very bad experience!😡</td>
-<td>1</td>
-<td>coming bad experience</td>
+<td>I understand the need but it was too long. 😕</td>
+<td>3</td>
+<td>understand need long</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>Best experience ever, highly recommend!</td>
-<td>5</td>
-<td>best experience ever highly recommend</td>
+<td>Lockdown completely disrupted my life, it was terrible. 😡</td>
+<td>1</td>
+<td>lockdown completely disrupt life terrible</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>Worst place I have been to!</td>
-<td>1</td>
-<td>worst place</td>
+<td>It was well-handled and necessary for public health. 🏥</td>
+<td>4</td>
+<td>well handle necessary public health</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>Just okay, nothing special.🙂</td>
-<td>3</td>
-<td>okay nothing special</td>
+<td>Lockdown helped us control the virus spread. 😷</td>
+<td>5</td>
+<td>lockdown help control virus spread</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>Fantastic service and food!</td>
-<td>5</td>
-<td>fantastic service food</td>
+<td>It was too restrictive and unnecessary for so long. 😒</td>
+<td>2</td>
+<td>restrictive unnecessary long</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>Would not recommend this place to anyone.</td>
-<td>1</td>
-<td>would recommend place anyone</td>
+<td>Not sure if lockdown was the best solution, but we had no choice. 🤷</td>
+<td>3</td>
+<td>sure lockdown good solution choice</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>Great location, mediocre food.</td>
+<td>It saved lives, but at a great personal cost to many. 😔</td>
 <td>3</td>
-<td>great location mediocre food</td>
+<td>save life great personal cost many</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>Terrible customer service.</td>
-<td>1</td>
-<td>terrible customer service</td>
+<td>The government did what was necessary during the lockdown. 👍</td>
+<td>4</td>
+<td>government necessary lockdown</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>Amazing atmosphere, will return!</td>
-<td>5</td>
-<td>amazing atmosphere return</td>
+<td>Lockdown was too harsh and not managed well. 😠</td>
+<td>1</td>
+<td>lockdown harsh manage well</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
-<td>Overpriced for the quality.</td>
-<td>2</td>
-<td>overpriced quality</td>
+<td>It was a good measure, but I hated being stuck at home. 🏠😖</td>
+<td>3</td>
+<td>good measure hate stick home</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
-<td>Perfect spot for a weekend getaway!</td>
-<td>5</td>
-<td>perfect spot weekend getaway</td>
+<td>Lockdown was essential but mental health suffered a lot. 🧠💔</td>
+<td>2</td>
+<td>lockdown essential mental health suffer lot</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
-<td>Dirty rooms and rude staff.</td>
-<td>1</td>
-<td>dirty room rude staff</td>
+<td>The benefits outweigh the negatives of the lockdown. ➕➖</td>
+<td>4</td>
+<td>benefit outweigh negative lockdown</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
-<td>Exceptional service and amenities!</td>
-<td>5</td>
-<td>exceptional service amenity</td>
+<td>Poor execution made it harder than it should be. 😞</td>
+<td>2</td>
+<td>poor execution make hard</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
-<td>Too noisy and crowded.</td>
-<td>2</td>
-<td>noisy crowded</td>
+<td>Lockdown was over before it was truly safe to do so. 😨</td>
+<td>3</td>
+<td>lockdown truly safe</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
-<td>Peaceful and relaxing environment.</td>
-<td>4</td>
-<td>peaceful relaxing environment</td>
+<td>We needed the lockdown to protect vulnerable populations. 🛡️</td>
+<td>5</td>
+<td>need lockdown protect vulnerable population</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
-<td>Unfriendly staff and bad food.</td>
+<td>The economic impact of lockdown was devastating. 💸</td>
 <td>1</td>
-<td>unfriendly staff bad food</td>
+<td>economic impact lockdown devastating</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
-<td>Loved the outdoor setting!</td>
+<td>Lockdown showed we can take collective action when needed. 🤝</td>
 <td>4</td>
-<td>loved outdoor setting</td>
+<td>lockdown show take collective action need</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
-<td>Cancellation policy is too strict.</td>
+<td>It was necessary, but the government support was insufficient. 💔</td>
 <td>2</td>
-<td>cancellation policy strict</td>
+<td>necessary government support insufficient</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">19</td>
-<td>Excellent choice for families!</td>
-<td>5</td>
-<td>excellent choice family</td>
+<td>Lockdown should have been stricter to be more effective. ⚠️</td>
+<td>4</td>
+<td>lockdown strict effective</td>
 </tr>
 </tbody>
 </table>

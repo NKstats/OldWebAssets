@@ -1,5 +1,5 @@
 ---
-title: "Cleaning Text Data in Python"
+title: "Text Preprocessing for Sentiment Analysis"
 format: html
 jupyter: python3
 author: "Solomon Eshun"
@@ -7,7 +7,7 @@ date: 2022-04-11
 description: "A guide to pre-processing text data for sentiment analysis in Python."
 image: /imgs/senti.png
 categories: ["programming"]
-tags: ["Python","ggplot2","purrr","rstats","correlation"]
+tags: [" "]
 output: 
   html_document:
     toc: true
@@ -19,47 +19,59 @@ output:
 
 <div style="height: 20px;"></div>
 
-### Outline
+## Outline
 
-1. [Introduction](#Introduction-1)
+1. [Introduction & Method](#Introduction-1)
 2. [Python Implementation](#Python-codes-implementation)
 
 
-### Introduction {#Introduction-1}
+## Introduction & Method {#Introduction-1}
 
-In sentiment analysis, the quality of input data can significantly influence the accuracy and effectiveness of the final outcomes. Analyzing texts, given their concise nature and informal language, presents unique challenges. This blog post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.
+Sentiment analysis is a critical component of natural language processing (NLP) that helps decipher the emotional tone behind words. This analysis is particularly valuable not only in social media monitoring and market research but also in public health initiatives. Understanding public sentiment can significantly enhance health communication strategies, patient engagement, and policy formulation. Moreover, in public health crises, sentiment analysis can help track community reactions to health advisories or public sentiment toward vaccination drives, thus informing more targeted health communication and intervention strategies. However, the effectiveness of sentiment analysis in these sensitive areas is heavily reliant on the quality of preprocessing applied to text data. This post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.
 
 <div style="text-align: center;">
-  <img src="/imgs/senti.png" width="85%">
+  <img src="/imgs/Fig1.png" width="85%">
 </div>
 
+Here’s a detailed breakdown of the preprocessing techniques I employed to refine the raw tweet data:
 
-First, I removed any URLs from the tweets since they do not contribute to sentiment analysis and only add noise and irrelevant information to the text.
-
-Next, I tokenized the tweets by splitting them into individual words. Tokenization allows for processing the text at a detailed level, treating each word as a separate entity, which is crucial for the cleaning and analysis that follows.
-
-After tokenization, I applied text cleaning steps to refine the data further. This included removing stopwords—common words like “the,” “and,” “is,” which do not carry significant sentiment information. Eliminating these words helps reduce textual noise and focuses the analysis on more impactful words that convey sentiment.
-
-I also removed special characters, such as punctuation marks and symbols, from the text. These characters do not aid in sentiment analysis and can hinder the performance of further analyses.
-
-Additionally, I performed lemmatization on the text, which reduces words to their base or root forms. This consolidates similar words and reduces dimensionality, improving the model's ability to generalize across different variations of words. For instance, words like “running,” “ran,” and “runs” are all reduced to the base form “run.”
-
-By applying these text preprocessing techniques, I transformed the raw tweet data into a clean and standardized format. This preparation is crucial for accurate sentiment analysis as it helps to eliminate noise, reduce dimensionality, and concentrate on the most relevant text features. The preprocessed tweets are now ready for further analysis and sentiment classification using suitable models.
+1. <u>URL Removal</u>: I began by stripping URLs from the texts. URLs usually don't contribute to sentiment and can add irrelevant noise to the text, so removing them helps in focusing on meaningful content.
 
 
-### Python codes implementation {#Python-codes-implementation}
+2. <u>Tokenization</u>: Next, I tokenized the text by splitting the texts into individual words. This is crucial as it allows us to process the text at the word level, which is essential for the subsequent cleaning and analysis steps.
+
+3. <u>Removing Stopwords</u>: I then removed stopwords - common words such as "the," "and," "is," etc., which are abundant in English but do not carry significant sentiment. Eliminating these words helps reduce textual noise and focuses the analysis on more impactful words that convey sentiment.
+
+4. <u>Eliminating Special Characters</u>: I also scrubbed the text of special characters like punctuation marks, symbols and emojis. These characters do not typically contribute to sentiment and can impede the performance of sentiment analysis models.
+
+5. <u>Lemmatization</u>: Finally, I applied lemmatization to consolidate similar words to their base or dictionary forms. Unlike stemming, which simply chops off the ends of words to reach a common base, lemmatization considers the context and morphological analysis of words to accurately transform them to their lemma. This process reduces the number of unique words the model must handle, enhancing its ability to generalize across different variations of the same word. 
+
+Through these text preprocessing steps, I transformed the raw text data into a clean and standardized format. This preparation is vital for conducting accurate sentiment analysis as it helps eliminate noise, reduce the complexity of the data, and focus on the most impactful elements of the text. The preprocessed texts are now ready for further analysis and can be effectively used in sentiment classification models to understand public sentiment.
+
+
+
+## Python Implementation {#Python-codes-implementation}
 
 Before creating the preprocessing function, it's essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.
 
 ```{python}
+#| eval: false
+
+# Install the emoji package before loading
+!pip install emoji
+
+```
+
+```{python}
+
+#| output: false
+
 # Load Required packages
 import pandas as pd
 import numpy as np
-import nltk, re
-from nltk import word_tokenize
+import nltk, re, emoji, spacy
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
-import emoji
 
 # Download necessary NLTK resources
 nltk.download('stopwords')
@@ -68,88 +80,91 @@ nltk.download('wordnet')
 
 ```
 
-- **nltk**: A toolkit for natural language processing that provides capabilities for tokenizing, stemming, and more.
-- **re**: Helps in removing punctuation and non-alphabetical characters using regular expressions.
-- **stopwords**: Common words in English that do not add much meaning to sentences and are often removed in the preprocessing step (eg. is, the, a, and, an, ...).
+<div style="height: 20px;"></div>
 
-### Defining the Text Preprocessing Function
-
-The main function, `preprocess_text`, cleans up the text data by removing unwanted characters, converting text to lowercase, removing stopwords, and lemmatizing the words.
+The `preprocess_text` function below incorporates all the preprocessing steps discussed in the [Introduction & Method](#Introduction-1) section. It is structured to be reusable for any text dataset that requires cleaning for sentiment analysis.
 
 
 ```{python}
 
+# Load the spaCy model
+nlp = spacy.load("en_core_web_sm")
+
 def preprocess_text(data):
-  
     processed_data = []
-    stop = set(stopwords.words('english'))  # Set of English stopwords
-
-    for k in range(len(data)):
-
+    # Set of English stopwords
+    stop = set(stopwords.words('english'))
+    for sentence in data:
         # Remove URLs
-        text = re.sub(r'https?://\S+|www\.\S+', '', data[k])
+        text = re.sub(r'https?://\S+|www\.\S+', '', sentence)
 
         # Remove emojis using the emoji library
         text = emoji.replace_emoji(text, replace='')
 
-        # Remove non-alphabet characters and convert to lowercase
-        text = re.sub('[^a-zA-Z]', ' ', text).lower().split()
+        # Create spaCy doc object
+        doc = nlp(text)
 
-        # Lemmatize words and remove stopwords
-        lemmatizer = WordNetLemmatizer()
-        stem_list = [lemmatizer.lemmatize(i) for i in text if i not in stop]
+        lem_list = []
+        for token in doc:
+            if token.is_alpha and token.text.lower() not in stop:  # Check if token is alphabetic and not a stopword
+                if token.pos_ != "PRON":  # Exclude all pronouns
+                    lem_list.append(token.lemma_.lower())
 
         # Rejoin words to form the final cleaned text
-        final_text = ' '.join(stem_list)
+        final_text = ' '.join(lem_list)
         processed_data.append(final_text)
 
     return processed_data
+
+
+
   
 ```
 
-
-
-### Steps Explained:
-- **Regular Expression**: `re.sub('[^a-zA-Z]', ' ', data[k])` removes any character that is not a letter.
-- **Lowercasing & Splitting**: Converts the text to lowercase and splits into individual words.
-- **Lemmatization**: Reduces words to their base or root form.
-- **Stopwords Removal**: Filters out common words that are unlikely to contribute to sentiment analysis.
-
-
+<div style="height: 20px;"></div>
 
 To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.
 
 ```{python}
 
 # Sample input text
-sample_text = ["This place is amazing 😊👍 .. @ 100% Check: https://example.com!! :)"]
+sample_text = ["The pandemic has affected the world.. @100% https://example.com!! :)"]
 cleaned_text = preprocess_text(sample_text)
 print(cleaned_text)
 
 ```
 
-
-
-### Creating a Larger DataFrame and Cleaning Texts
+<div style="height: 20px;"></div>
 
 Next, we create a larger DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.
 
 ```{python}
-# Generating sample data
+# Creating a sample DataFrame with texts
+
 data = {
     'Review': [
-        "Love this place, will come again!👍", "Not coming again! very bad experience!😡",
-        "Best experience ever, highly recommend!", "Worst place I have been to!",
-        "Just okay, nothing special.🙂", "Fantastic service and food!",
-        "Would not recommend this place to anyone.", "Great location, mediocre food.",
-        "Terrible customer service.", "Amazing atmosphere, will return!",
-        "Overpriced for the quality.", "Perfect spot for a weekend getaway!",
-        "Dirty rooms and rude staff.", "Exceptional service and amenities!",
-        "Too noisy and crowded.", "Peaceful and relaxing environment.",
-        "Unfriendly staff and bad food.", "Loved the outdoor setting!",
-        "Cancellation policy is too strict.", "Excellent choice for families!"
+        "Lockdown was necessary for our safety, I fully support it! 😊",
+        "I understand the need but it was too long. 😕",
+        "Lockdown completely disrupted my life, it was terrible. 😡",
+        "It was well-handled and necessary for public health. 🏥",
+        "Lockdown helped us control the virus spread. 😷",
+        "It was too restrictive and unnecessary for so long. 😒",
+        "Not sure if lockdown was the best solution, but we had no choice. 🤷",
+        "It saved lives, but at a great personal cost to many. 😔",
+        "The government did what was necessary during the lockdown. 👍",
+        "Lockdown was too harsh and not managed well. 😠",
+        "It was a good measure, but I hated being stuck at home. 🏠😖",
+        "Lockdown was essential but mental health suffered a lot. 🧠💔",
+        "The benefits outweigh the negatives of the lockdown. ➕➖",
+        "Poor execution made it harder than it should be. 😞",
+        "Lockdown was over before it was truly safe to do so. 😨",
+        "We needed the lockdown to protect vulnerable populations. 🛡️",
+        "The economic impact of lockdown was devastating. 💸",
+        "Lockdown showed we can take collective action when needed. 🤝",
+        "It was necessary, but the government support was insufficient. 💔",
+        "Lockdown should have been stricter to be more effective. ⚠️"
     ],
-    'Rating': [5, 1, 5, 1, 3, 5, 1, 3, 1, 5, 2, 5, 1, 5, 2, 4, 1, 4, 2, 5]
+    'Sentiment_Rating': [5, 3, 1, 4, 5, 2, 3, 3, 4, 1, 3, 2, 4, 2, 3, 5, 1, 4, 2, 4]
 }
 
 # Creating the DataFrame
@@ -157,5 +172,8 @@ reviews_df = pd.DataFrame(data)
 
 # Applying the text preprocessing function
 reviews_df['Cleaned_Review'] = preprocess_text(reviews_df['Review'].tolist())
+pd.set_option('display.max_colwidth', None)
 reviews_df
 ```
+
+
