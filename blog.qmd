@@ -1,7 +1,7 @@
 ---
 title: ""
 listing:
-  contents: "write_ups/*.qmd"#["ex1.qmd", "ex2.qmd"]
+  contents: "blogs/sentiment.qmd" #"blogs/*.qmd"
   feed: true
   type: "grid"
   categories: true
@@ -18,3 +18,4 @@ title-block-banner: true
 Welcome to the NKstats Blog! Explore our latest posts below.
 
 <div style="height: 20px;"></div>
+
