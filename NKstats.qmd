@@ -85,7 +85,7 @@ function collapseAll() {
 }
 </script>
 
-<div style="height: 8px;"></div>
+<div style="height: 4px;"></div>
 
 ```{=html}
 <details>
