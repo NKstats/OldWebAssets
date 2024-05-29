@@ -57,8 +57,7 @@ details[open] > summary:before {
 
 ![](imgs/self1.JPG){.circle-img}
 
-<div style="height: 14px;"></div>
-
+<div style="height: 4px;"></div>
 
 Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University.
 
