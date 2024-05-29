@@ -176,7 +176,7 @@ To demonstrate the functionality, the preprocessing function is applied to a sam
 # Sample input text
 sample_text = ["The pandemic has affected the world.. @100% https://example.com!! :)"]
 cleaned_text = preprocess_text(sample_text)
-print(cleaned_text)
+cleaned_text
 
 ```
 
