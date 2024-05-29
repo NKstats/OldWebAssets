@@ -122,8 +122,6 @@ Let’s get started by exploring and preparing the dataset.
 ```{python}
 
 import pandas as pd
-
-import pandas as pd
 import numpy as np
 
 url = "https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"
@@ -136,10 +134,7 @@ df = pd.read_csv(url, names=column_names)
 
 # Replace '?' with NaN
 df.replace('?', np.nan, inplace=True)
-
-# Option to drop rows with NaN
-df.dropna(inplace=True)
-
+df.dropna(inplace=True) # drop rows with NaN
 
 ```
 
@@ -226,10 +221,7 @@ In the PSM implementation, I will use the `psmpy` package developed by @kline202
 ```{python}
 
 from psmpy import PsmPy
-from psmpy.functions import cohenD
 from psmpy.plotting import *
-import matplotlib.pyplot as plt
-import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 import math
@@ -239,17 +231,6 @@ import math
 
 
 ```{python, echo = FALSE}
-
-import researchpy as rp
-
-# rp.summary_cat(df['num'])
-
-import warnings
-warnings.filterwarnings('ignore')
-
-
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 covariate = 'age'
 
