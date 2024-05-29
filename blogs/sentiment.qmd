@@ -182,7 +182,7 @@ cleaned_text
 
 <div style="height: 20px;"></div>
 
-Next, we create a larger DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.
+Next, I create a DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.
 
 ```{python}
 # Creating a sample DataFrame with texts
