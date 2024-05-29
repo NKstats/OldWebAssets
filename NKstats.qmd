@@ -49,7 +49,6 @@ details > summary:before {
 details[open] > summary:before {
   content: "−";
 }
-/* Ensuring text remains black in dark mode */
 .dark-mode details > summary {
   color: white !important;
 }
@@ -63,7 +62,7 @@ Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathema
 
 My goal is to master statistical methodologies that can identify the most effective treatments and interventions by analyzing data from observational studies, clinical trials, etc. I am particularly interested in combining machine learning with causal methods to analyze the effects of policies and interventions on disease outcomes, addressing the challenges posed by heterogeneous patient characteristics and varying medical protocols within healthcare datasets. Additionally, I am interested in exploring the dynamics of infectious disease transmission by developing mathematical and statistical models to simulate disease spread and evaluate the effectiveness of control strategies.
 
-<div style="height: 8px;"></div>
+<div style="height: 6px;"></div>
 
 <!-- Expand/Collapse All Buttons -->
 <div>
@@ -85,11 +84,11 @@ function collapseAll() {
 }
 </script>
 
-<div style="height: 4px;"></div>
+<div style="height: 2px;"></div>
 
 ```{=html}
 <details>
-    <summary style="color: #333333; font-size: 20px;"><strong>Research Interests</strong></summary>
+    <summary style="color: #333333; font-size: 19px;"><strong>Research Interests</strong></summary>
     <div style="height: 10px;"></div>
     <div style="margin-left: 30px;">Causal Inference, Precision Medicine, Machine Learning, Infectious Disease Modeling</div>
 </details>
@@ -102,7 +101,7 @@ function collapseAll() {
 
 ```{=html}
 <details>
-<summary style="color: #333333; font-size: 20px;"><strong>Education</strong></summary>
+<summary style="color: #333333; font-size: 19px;"><strong>Education</strong></summary>
 <div style="height: 10px;"></div>
 <ul>
     <li>
@@ -128,7 +127,7 @@ function collapseAll() {
 
 ```{=html}
 <details>
-<summary style="color: #333333; font-size: 20px;"><strong>Experience</strong></summary>
+<summary style="color: #333333; font-size: 19px;"><strong>Experience</strong></summary>
 <div style="height: 10px;"></div>
 <ul>
     <li>
@@ -167,7 +166,7 @@ function collapseAll() {
 
 ```{=html}
 <details>
-<summary style="color: #333333; font-size: 20px;"><strong>Honors & Awards</strong></summary>
+<summary style="color: #333333; font-size: 19px;"><strong>Honors & Awards</strong></summary>
 <div style="height: 10px;"></div>
 <ul>
     <li>
