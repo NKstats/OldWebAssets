@@ -114,6 +114,7 @@ Before creating the preprocessing function, it's essential to set up the environ
 
 # Load Required packages
 import pandas as pd
+pd.set_option('display.max_colwidth', None)
 import numpy as np
 import nltk, re, emoji, spacy
 from nltk.stem import WordNetLemmatizer
@@ -218,7 +219,6 @@ reviews_df = pd.DataFrame(data)
 
 # Applying the text preprocessing function
 reviews_df['Cleaned_Review'] = preprocess_text(reviews_df['Review'].tolist())
-pd.set_option('display.max_colwidth', None)
 reviews_df
 ```
 
