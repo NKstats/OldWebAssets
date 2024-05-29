@@ -57,13 +57,10 @@ details[open] > summary:before {
 
 ![](imgs/self1.JPG){.circle-img}
 
-<br>
 
-Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University.
+Hi! My name is Solomon Eshun (he/him/his). I am a PhD student in Applied Mathematics at Iowa State University. I am dedicated to developing statistical methods and tools that address public health challenges. My goal is to master methodologies that can identify the most effective treatments and interventions by analyzing data from observational studies, clinical trials and other sources. I am particularly interested in combining machine learning with causal methods to analyze the effects of policies and interventions on disease outcomes, addressing the challenges posed by heterogeneous patient characteristics and varying medical protocols within healthcare datasets. Additionally, I am interested in exploring the dynamics of infectious disease transmission by developing mathematical and statistical models to simulate disease spread and evaluate the effectiveness of control strategies.
 
-I am dedicated to developing statistical methods and tools that address public health challenges. My goal is to master methodologies that can identify the most effective treatments and interventions by analyzing data from observational studies, clinical trials and other sources. I am particularly interested in combining machine learning with causal methods to analyze the effects of policies and interventions on disease outcomes, addressing the challenges posed by heterogeneous patient characteristics and varying medical protocols within healthcare datasets. Additionally, I am interested in exploring the dynamics of infectious disease transmission by developing mathematical and statistical models to simulate disease spread and evaluate the effectiveness of control strategies.
-
-<div style="height: 10px;"></div>
+<div style="height: 8px;"></div>
 
 <!-- Expand/Collapse All Buttons -->
 <div>
@@ -85,7 +82,7 @@ function collapseAll() {
 }
 </script>
 
-<div style="height: 10px;"></div>
+<div style="height: 8px;"></div>
 
 ```{=html}
 <details>
@@ -98,7 +95,7 @@ function collapseAll() {
 
 
 
-<div style="height: 10px;"></div>
+<div style="height: 8px;"></div>
 
 ```{=html}
 <details>
@@ -121,7 +118,7 @@ function collapseAll() {
 </details>
 ```
 
-<div style="height: 10px;"></div>
+<div style="height: 8px;"></div>
 
 <!-- ![[Causality for Machine Learning](https://ff13.fastforwardlabs.com/)](imgs/whatif.png)  -->
 
@@ -161,7 +158,7 @@ function collapseAll() {
 </details>
 ```
 
-<div style="height: 10px;"></div>
+<div style="height: 8px;"></div>
 
 
 
