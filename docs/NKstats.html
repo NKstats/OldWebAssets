@@ -148,38 +148,35 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    overflow: auto;
-  }
   body {
     font-family: 'Arial', sans-serif;
     background-color: white;
     color: black;
+    transition: background-color 0s, color 0s;
   }
   .navbar {
     background-color: #87CEEB;
     color: black;
+    transition: background-color 0s, color 0s;
     border-bottom: 1px solid white;
   }
   .navbar .navbar-brand, .navbar .nav-link, .navbar a {
     font-size: 18px;
     color: inherit;
+    transition: color 0s;
   }
   .navbar .navbar-brand {
     font-size: 19pt;
   }
-  body.dark-mode {
-    background-color: #343a40;
-    color: #ffffff;
-  }
-  .navbar.dark-mode {
+  body.dark-mode, .navbar.dark-mode {
     background-color: #343a40;
     color: #ffffff;
   }
   .navbar.dark-mode .navbar-brand, .navbar.dark-mode .nav-link, .navbar.dark-mode a {
     color: #ffffff;
+  }
+  .navbar.dark-mode {
+    background-color: #343a40;
   }
   .navbar .nav-link[aria-expanded="true"], .navbar .dropdown-menu a {
     color: black;
