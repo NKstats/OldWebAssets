@@ -194,6 +194,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     color: black;
     transition: background-color 0s, color 0s;
   }
+  #contactForm input[type="text"], #contactForm input[type="email"], #contactForm textarea {
+    background-color: white;
+    color: black;
+    padding: 15px;
+    font-size: 15px;
+    margin-top: 10px;
+    border: 0.5px solid #ccc;
+  }
+  #contactForm input[type="text"]:focus, #contactForm input[type="email"]:focus, #contactForm textarea:focus {
+    border: 4px solid #87CEEB;
+    outline: none;
+  }
+  body.dark-mode {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  body.dark-mode #contactForm input[type="text"], 
+  body.dark-mode #contactForm input[type="email"], 
+  body.dark-mode #contactForm textarea {
+    background-color: #555;
+    color: white;
+  }
+  .navbar {
+    background-color: #87CEEB;
+    color: black;
+    transition: background-color 0s, color 0s;
+    border-bottom: 1px solid white;
+  }
   .navbar {
     background-color: #87CEEB;
     color: black;
