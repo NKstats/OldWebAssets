@@ -1,7 +1,7 @@
 ---
 title: ""
 listing:
-  contents: "blogs/sentiment.qmd" #"blogs/*.qmd"
+  contents: "blogs/sentiment.qmd"
   feed: true
   type: "grid"
   categories: true
