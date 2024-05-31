@@ -262,8 +262,10 @@ button.send-button:hover {
 <div style="height: 20px;">
 
 </div>
-    <div style="font-size: 30px;">Contact</div>
-<form action="https://formspree.io/f/xeqybeql" method="POST">
+<div style="font-size: 30px;">
+Contact
+</div>
+<form action="https://formspree.io/f/xeqybeql" method="POST" id="contactForm">
 <p><input type="text" id="name" name="name" placeholder="Name" required=""></p>
 <p><input type="email" id="email" name="email" placeholder="Email" required=""></p>
 <textarea id="message" name="message" rows="10" placeholder="Message" required=""></textarea>
@@ -274,6 +276,34 @@ button.send-button:hover {
 Send
 </button>
 </form>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                form.reset(); // Reset the form to clear fields
+                alert('Email sent successfully!');
+            } else {
+                alert('There was an issue with sending the email.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error sending message.');
+        });
+    });
+});
+</script>
 
 
 
