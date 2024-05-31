@@ -17,7 +17,7 @@ website:
       - text: "Blog"
         href: blog.html
       - icon: envelope
-        href: about.html
+        href: contact.html
       - icon: github
         href: https://github.com/NKstats
       - icon: linkedin
