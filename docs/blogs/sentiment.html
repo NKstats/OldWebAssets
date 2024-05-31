@@ -194,7 +194,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     color: black;
     transition: background-color 0s, color 0s;
   }
-  #contactForm input[type="text"], #contactForm input[type="email"], #contactForm textarea {
+  #contactForm input[type="text"], 
+  #contactForm input[type="email"], 
+  #contactForm textarea {
     background-color: white;
     color: black;
     padding: 15px;
@@ -202,25 +204,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     margin-top: 10px;
     border: 0.5px solid #ccc;
   }
-  #contactForm input[type="text"]:focus, #contactForm input[type="email"]:focus, #contactForm textarea:focus {
+  #contactForm input[type="text"]:focus, 
+  #contactForm input[type="email"]:focus, 
+  #contactForm textarea:focus {
     border: 4px solid #87CEEB;
     outline: none;
-  }
-  body.dark-mode {
-    background-color: #343a40;
-    color: #ffffff;
   }
   body.dark-mode #contactForm input[type="text"], 
   body.dark-mode #contactForm input[type="email"], 
   body.dark-mode #contactForm textarea {
     background-color: #555;
     color: white;
-  }
-  .navbar {
-    background-color: #87CEEB;
-    color: black;
-    transition: background-color 0s, color 0s;
-    border-bottom: 1px solid white;
   }
   .navbar {
     background-color: #87CEEB;
@@ -263,14 +257,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     background-color: white;
     color: black;
     border: 1px solid #343a40;
-    border-radius: 2px;
+    border-radius: 10px;
     padding: 8px 18px;
     cursor: pointer;
     font-size: 14px;
     z-index: 1000;
   }
   .back-to-top:hover {
-    background-color: #f1f1f1;
+    background-color: #87CEEB;
   }
   body.dark-mode .back-to-top {
     background-color: #343a40;
@@ -278,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     border: 0.5px solid white;
   }
   body.dark-mode .back-to-top:hover {
-    background-color: #343a40;
+    background-color: #87CEEB;
   }
 </style>
 

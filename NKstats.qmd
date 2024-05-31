@@ -54,12 +54,12 @@ details[open] > summary:before {
 }
 button {
   background-color: transparent;
-  padding: 5px 10px;
+  padding: 2px 10px;
   font-size: 15px;
   cursor: pointer;
   margin: 5px;
   border-radius: 10px;
-  border: 3px solid #87CEEB;
+  border: 2px solid #87CEEB;
 }
 button:hover {
   background-color: #87CEEB;
@@ -136,8 +136,6 @@ function collapseAll() {
 ```
 
 <div style="height: 8px;"></div>
-
-<!-- ![[Causality for Machine Learning](https://ff13.fastforwardlabs.com/)](imgs/whatif.png)  -->
 
 
 ```{=html}
