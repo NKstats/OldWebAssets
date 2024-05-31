@@ -6,7 +6,7 @@ author: "Solomon Eshun"
 date: 2022-04-11
 description: "A guide to pre-processing text data for sentiment analysis in Python."
 image: /imgs/senti.png
-categories: ["programming"]
+categories: ["Programming"]
 tags: [" "]
 output: 
   html_document:

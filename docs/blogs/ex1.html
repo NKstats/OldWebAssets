@@ -143,23 +143,30 @@ div.csl-indent {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="javascript:toggleDarkMode();"> <i class="bi bi-moon" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Research</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-research--presentation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Research &amp; Presentation</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-research--presentation">    
         <li>
     <a class="dropdown-item" href="../research.html">
- <span class="dropdown-text">Publication</span></a>
+ <span class="dropdown-text">Research</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../conference.html">
- <span class="dropdown-text">Conference Presentation</span></a>
+ <span class="dropdown-text">Presentation</span></a>
   </li>  
     </ul>
   </li>
@@ -168,7 +175,7 @@ div.csl-indent {
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:eshunsolomon5@gmail.com"> <i class="bi bi-envelope" role="img">
+    <a class="nav-link" href="../about.html"> <i class="bi bi-envelope" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -200,17 +207,67 @@ div.csl-indent {
 <style>
   body {
     font-family: 'Arial', sans-serif;
-    background-color: white
+    background-color: white;
+    color: black;
+    transition: background-color 0s, color 0s;
   }
   .navbar {
     background-color: #87CEEB;
+    color: black;
+    transition: background-color 0s, color 0s;
+    border-bottom: 1px solid white;
+  }
+  .navbar .navbar-brand, .navbar .nav-link, .navbar a {
+    font-size: 18px;
+    color: inherit;
+    transition: color 0s;
   }
   .navbar .navbar-brand {
-    font-weight: bold;
-    font-size: 24px;
+    font-size: 19pt;
   }
-  .navbar .nav-link {
-    font-size: 18px;
+  body.dark-mode, .navbar.dark-mode {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  .navbar.dark-mode .navbar-brand, .navbar.dark-mode .nav-link, .navbar.dark-mode a {
+    color: #ffffff;
+  }
+  .navbar.dark-mode {
+    background-color: #343a40;
+  }
+  .navbar .nav-link[aria-expanded="true"], .navbar .dropdown-menu a {
+    color: black;
+    background-color: white;
+  }
+  .navbar.dark-mode .nav-link[aria-expanded="true"], .navbar.dark-mode .dropdown-menu a {
+    color: white;
+    background-color: #343a40;
+  }
+  .back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    background-color: white;
+    color: black;
+    border: 1px solid #343a40;
+    border-radius: 2px;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;
+  }
+  .back-to-top:hover {
+    background-color: #f1f1f1;
+  }
+  body.dark-mode .back-to-top {
+    background-color: #343a40;
+    color: white;
+    border: 0.5px solid white;
+  }
+  body.dark-mode .back-to-top:hover {
+    background-color: #343a40;
   }
 </style>
 
@@ -339,83 +396,83 @@ Dataset Variable Descriptions
 <li><p>num (Diagnosis of Heart Disease): This is the outcome variable and is already coded as 0 = no presence and 1-4 indicating different types of defects (often, any value &gt; 0 is considered as presence of disease). This variable can be used to determine the effect of exercise-induced angina on the presence of heart disease.</p></li>
 </ul>
 </details>
-<div id="0796689e" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Column names based on the dataset documentation</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>column_names <span class="op">=</span> [<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'cp'</span>, <span class="st">'trestbps'</span>, <span class="st">'chol'</span>, <span class="st">'fbs'</span>, <span class="st">'restecg'</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">'thalach'</span>, <span class="st">'exang'</span>, <span class="st">'oldpeak'</span>, <span class="st">'slope'</span>, <span class="st">'ca'</span>, <span class="st">'thal'</span>, <span class="st">'num'</span>]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url, names<span class="op">=</span>column_names)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace '?' with NaN</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df.replace(<span class="st">'?'</span>, np.nan, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>df.dropna(inplace<span class="op">=</span><span class="va">True</span>) <span class="co"># drop rows with NaN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="78452200" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Column names based on the dataset documentation</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>column_names <span class="op">=</span> [<span class="st">'age'</span>, <span class="st">'sex'</span>, <span class="st">'cp'</span>, <span class="st">'trestbps'</span>, <span class="st">'chol'</span>, <span class="st">'fbs'</span>, <span class="st">'restecg'</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">'thalach'</span>, <span class="st">'exang'</span>, <span class="st">'oldpeak'</span>, <span class="st">'slope'</span>, <span class="st">'ca'</span>, <span class="st">'thal'</span>, <span class="st">'num'</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url, names<span class="op">=</span>column_names)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace '?' with NaN</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df.replace(<span class="st">'?'</span>, np.nan, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df.dropna(inplace<span class="op">=</span><span class="va">True</span>) <span class="co"># drop rows with NaN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f4504161" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'num'</span>] <span class="op">=</span> (df[<span class="st">'num'</span>] <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>continuous_vars <span class="op">=</span> [<span class="st">'age'</span>, <span class="st">'trestbps'</span>, <span class="st">'chol'</span>, <span class="st">'thalach'</span>, <span class="st">'oldpeak'</span>, <span class="st">'ca'</span>]</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting all other variables to 'category' data type except the ones in continuous_vars</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> column <span class="kw">in</span> df.columns:</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> column <span class="kw">not</span> <span class="kw">in</span> continuous_vars:</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># First converting to float to handle any decimal string representations</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        df[column] <span class="op">=</span> df[column].astype(<span class="st">'float'</span>).astype(<span class="st">'int64'</span>).astype(<span class="st">'category'</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.get_dummies(df, columns<span class="op">=</span>[<span class="st">'thal'</span>, <span class="st">'cp'</span>, <span class="st">'restecg'</span>])</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'thal_6'</span>, <span class="st">'restecg_1'</span>, <span class="st">'cp_1'</span>])</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># List of columns that contain boolean values</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>bool_columns <span class="op">=</span> [<span class="st">'thal_3'</span>, <span class="st">'thal_7'</span>, <span class="st">'cp_2'</span>, <span class="st">'cp_3'</span>, <span class="st">'cp_4'</span>, <span class="st">'restecg_0'</span>, <span class="st">'restecg_2'</span>]</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting boolean values to integers (1 for True, 0 for False)</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> column <span class="kw">in</span> bool_columns:</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    df[column] <span class="op">=</span> df[column].astype(<span class="bu">int</span>).astype(<span class="st">'category'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a875aaac" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'num'</span>] <span class="op">=</span> (df[<span class="st">'num'</span>] <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>continuous_vars <span class="op">=</span> [<span class="st">'age'</span>, <span class="st">'trestbps'</span>, <span class="st">'chol'</span>, <span class="st">'thalach'</span>, <span class="st">'oldpeak'</span>, <span class="st">'ca'</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting all other variables to 'category' data type except the ones in continuous_vars</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> column <span class="kw">in</span> df.columns:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> column <span class="kw">not</span> <span class="kw">in</span> continuous_vars:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># First converting to float to handle any decimal string representations</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        df[column] <span class="op">=</span> df[column].astype(<span class="st">'float'</span>).astype(<span class="st">'int64'</span>).astype(<span class="st">'category'</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.get_dummies(df, columns<span class="op">=</span>[<span class="st">'thal'</span>, <span class="st">'cp'</span>, <span class="st">'restecg'</span>])</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'thal_6'</span>, <span class="st">'restecg_1'</span>, <span class="st">'cp_1'</span>])</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># List of columns that contain boolean values</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>bool_columns <span class="op">=</span> [<span class="st">'thal_3'</span>, <span class="st">'thal_7'</span>, <span class="st">'cp_2'</span>, <span class="st">'cp_3'</span>, <span class="st">'cp_4'</span>, <span class="st">'restecg_0'</span>, <span class="st">'restecg_2'</span>]</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting boolean values to integers (1 for True, 0 for False)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> column <span class="kw">in</span> bool_columns:</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    df[column] <span class="op">=</span> df[column].astype(<span class="bu">int</span>).astype(<span class="st">'category'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <details>
 <summary>
 Distribution of the Variables with respect to Exang
 </summary>
-<div id="379760fc" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering out the 'num' and 'exang' columns from plotting</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plot_columns <span class="op">=</span> df.columns[<span class="op">~</span>df.columns.isin([<span class="st">'num'</span>, <span class="st">'exang'</span>])]</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine the number of subplots</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> plot_columns.size</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>n_cols <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>n_rows <span class="op">=</span> (n_vars <span class="op">+</span> n_cols <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> n_cols  <span class="co"># This ensures enough rows to accommodate all plots</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure to hold the subplots</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(n_rows, n_cols, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">5</span> <span class="op">*</span> n_rows))</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.flatten()  <span class="co"># Flatten the axes array for easy iteration</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through the list of columns and create plots</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, column <span class="kw">in</span> <span class="bu">enumerate</span>(plot_columns):</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[i]</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> df[column].dtype <span class="kw">in</span> [<span class="st">'int64'</span>, <span class="st">'float64'</span>]:  <span class="co"># Adjust based on your specific data types</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span>column, hue<span class="op">=</span><span class="st">'exang'</span>, element<span class="op">=</span><span class="st">'step'</span>, stat<span class="op">=</span><span class="st">'density'</span>, common_norm<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="ss">f'Distribution of </span><span class="sc">{</span>column<span class="sc">}</span><span class="ss"> by Exang'</span>)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(column)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Density'</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        ax.legend(title<span class="op">=</span><span class="st">'Exang'</span>, labels<span class="op">=</span>[<span class="st">'No Angina (0)'</span>, <span class="st">'With Angina (1)'</span>], loc<span class="op">=</span><span class="st">'best'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        sns.countplot(x<span class="op">=</span>column, hue<span class="op">=</span><span class="st">'exang'</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="ss">f'Count of </span><span class="sc">{</span>column<span class="sc">}</span><span class="ss"> by Exang'</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(column)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Count'</span>)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        ax.legend(title<span class="op">=</span><span class="st">'Exang'</span>, labels<span class="op">=</span>[<span class="st">'No Angina (0)'</span>, <span class="st">'With Angina (1)'</span>], loc<span class="op">=</span><span class="st">'best'</span>)</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust layout to prevent overlap and ensure labels are readable</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9d273cb2" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering out the 'num' and 'exang' columns from plotting</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plot_columns <span class="op">=</span> df.columns[<span class="op">~</span>df.columns.isin([<span class="st">'num'</span>, <span class="st">'exang'</span>])]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine the number of subplots</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> plot_columns.size</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>n_cols <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>n_rows <span class="op">=</span> (n_vars <span class="op">+</span> n_cols <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> n_cols  <span class="co"># This ensures enough rows to accommodate all plots</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure to hold the subplots</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(n_rows, n_cols, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">5</span> <span class="op">*</span> n_rows))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.flatten()  <span class="co"># Flatten the axes array for easy iteration</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through the list of columns and create plots</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, column <span class="kw">in</span> <span class="bu">enumerate</span>(plot_columns):</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[i]</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> df[column].dtype <span class="kw">in</span> [<span class="st">'int64'</span>, <span class="st">'float64'</span>]:  <span class="co"># Adjust based on your specific data types</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        sns.histplot(data<span class="op">=</span>df, x<span class="op">=</span>column, hue<span class="op">=</span><span class="st">'exang'</span>, element<span class="op">=</span><span class="st">'step'</span>, stat<span class="op">=</span><span class="st">'density'</span>, common_norm<span class="op">=</span><span class="va">False</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="ss">f'Distribution of </span><span class="sc">{</span>column<span class="sc">}</span><span class="ss"> by Exang'</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(column)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Density'</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        ax.legend(title<span class="op">=</span><span class="st">'Exang'</span>, labels<span class="op">=</span>[<span class="st">'No Angina (0)'</span>, <span class="st">'With Angina (1)'</span>], loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        sns.countplot(x<span class="op">=</span>column, hue<span class="op">=</span><span class="st">'exang'</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="ss">f'Count of </span><span class="sc">{</span>column<span class="sc">}</span><span class="ss"> by Exang'</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(column)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        ax.legend(title<span class="op">=</span><span class="st">'Exang'</span>, labels<span class="op">=</span>[<span class="st">'No Angina (0)'</span>, <span class="st">'With Angina (1)'</span>], loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust layout to prevent overlap and ensure labels are readable</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -429,38 +486,38 @@ Distribution of the Variables with respect to Exang
 <section id="propensity-score-estimation" class="level2">
 <h2 class="anchored" data-anchor-id="propensity-score-estimation">Propensity Score Estimation</h2>
 <p>In the PSM implementation, I will use the <code>psmpy</code> package developed by <span class="citation" data-cites="kline2022psmpy">Kline and Luo (<a href="#ref-kline2022psmpy" role="doc-biblioref">2022</a>)</span></p>
-<div id="e44fa07b" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psmpy <span class="im">import</span> PsmPy</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psmpy.plotting <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="75cb550c" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psmpy <span class="im">import</span> PsmPy</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psmpy.plotting <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="631a1413" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>covariate <span class="op">=</span> <span class="st">'age'</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>pepe_calories <span class="op">=</span> data[data[<span class="st">'exang'</span>] <span class="op">==</span> <span class="dv">1</span>][covariate]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>modern_calories <span class="op">=</span> data[data[<span class="st">'exang'</span>] <span class="op">==</span> <span class="dv">0</span>][covariate]</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.distplot(pepe_calories, fit_kws<span class="op">=</span>{<span class="st">"color"</span>:<span class="st">"'orange'"</span>}, kde<span class="op">=</span><span class="va">True</span>,<span class="co">#palette=["#3498db",'orange']</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        hist<span class="op">=</span><span class="va">None</span>, label<span class="op">=</span><span class="st">"exang = 0"</span>, kde_kws<span class="op">=</span>{<span class="st">"linewidth"</span>: <span class="fl">2.5</span>})<span class="op">;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.distplot(modern_calories, fit_kws<span class="op">=</span>{<span class="st">"color"</span>:<span class="st">"#3498db"</span>}, kde<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        hist<span class="op">=</span><span class="va">None</span>, label<span class="op">=</span><span class="st">"exang = 1"</span>, kde_kws<span class="op">=</span>{<span class="st">"linewidth"</span>: <span class="fl">2.5</span>})<span class="op">;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Propensity Score'</span>)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Estimated Ps'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, labelpad<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">' '</span>, fontsize<span class="op">=</span><span class="dv">10</span>, labelpad<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.yticks([])</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Before Matching'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="34eef79d" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>covariate <span class="op">=</span> <span class="st">'age'</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>pepe_calories <span class="op">=</span> data[data[<span class="st">'exang'</span>] <span class="op">==</span> <span class="dv">1</span>][covariate]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>modern_calories <span class="op">=</span> data[data[<span class="st">'exang'</span>] <span class="op">==</span> <span class="dv">0</span>][covariate]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.distplot(pepe_calories, fit_kws<span class="op">=</span>{<span class="st">"color"</span>:<span class="st">"'orange'"</span>}, kde<span class="op">=</span><span class="va">True</span>,<span class="co">#palette=["#3498db",'orange']</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        hist<span class="op">=</span><span class="va">None</span>, label<span class="op">=</span><span class="st">"exang = 0"</span>, kde_kws<span class="op">=</span>{<span class="st">"linewidth"</span>: <span class="fl">2.5</span>})<span class="op">;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.distplot(modern_calories, fit_kws<span class="op">=</span>{<span class="st">"color"</span>:<span class="st">"#3498db"</span>}, kde<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        hist<span class="op">=</span><span class="va">None</span>, label<span class="op">=</span><span class="st">"exang = 1"</span>, kde_kws<span class="op">=</span>{<span class="st">"linewidth"</span>: <span class="fl">2.5</span>})<span class="op">;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Propensity Score'</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Estimated Ps'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, labelpad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">' '</span>, fontsize<span class="op">=</span><span class="dv">10</span>, labelpad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'right'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'top'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>ax.spines[<span class="st">'left'</span>].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.yticks([])</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Before Matching'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -903,6 +960,51 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>
+  function toggleDarkMode() {
+    var body = document.body;
+    body.classList.toggle('dark-mode');
+    var navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('dark-mode');
+    var icon = document.querySelector('.fa-moon');
+    if (icon) {
+      icon.classList.toggle('fa-sun');
+      icon.classList.toggle('fa-moon');
+    }
+    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+  }
+
+  function applyThemePreference() {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.navbar').classList.add('dark-mode');
+      var icon = document.querySelector('.fa-moon');
+      if (icon) {
+        icon.classList.add('fa-sun');
+        icon.classList.remove('fa-moon');
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    applyThemePreference();
+    var button = document.createElement('button');
+    button.innerHTML = '&#8679; Back to Top';
+    button.className = 'back-to-top';
+    document.body.appendChild(button);
+    button.onclick = function() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    };
+    window.onscroll = function() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        button.style.display = "block";
+      } else {
+        button.style.display = "none";
+      }
+    };
+  });
+</script>
 
 
 

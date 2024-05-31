@@ -8,16 +8,16 @@ website:
     right:
       - text: "About"
         href: about.html
-      - text: "Research"
+      - text: "Research & Presentation"
         menu:
-          - text: "Publication"
+          - text: "Research"
             href: research.html
-          - text: "Conference Presentation"
+          - text: "Presentation"
             href: conference.html
       - text: "Blog"
         href: blog.html
       - icon: envelope
-        href: mailto:eshunsolomon5@gmail.com
+        href: about.html
       - icon: github
         href: https://github.com/NKstats
       - icon: linkedin

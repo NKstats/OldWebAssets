@@ -15,7 +15,7 @@ title-block-banner: true
 
 <div style="height: 20px;"></div>
 
-Welcome to the NKstats Blog! Explore our latest posts below.
+Welcome to the NKstats Blog! Explore my latest posts below.
 
 <div style="height: 20px;"></div>
 
