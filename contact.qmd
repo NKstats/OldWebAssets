@@ -61,6 +61,8 @@ nav button {
 
 <div style="font-size: 30px;"><strong>Contact Me!</strong></div>
 
+<div style="height: 20px;"></div>
+
 <form action="https://formspree.io/f/xeqybeql" method="POST" id="contactForm">
   <input type="text" id="name" name="name" placeholder="Name" required>
   

@@ -245,13 +245,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
   .navbar .nav-link[aria-expanded="true"], .navbar .dropdown-menu a {
     color: black;
-    background-color: white;
+    background-color: #87CEEB;
   }
   .navbar.dark-mode .nav-link[aria-expanded="true"], .navbar.dark-mode .dropdown-menu a {
     color: white;
     background-color: #343a40;
   }
-  .back-to-top {
+    .navbar .dropdown-menu a {
+      color: black;
+      background-color: white;
+    }
+    .navbar .dropdown-menu a:hover {
+      background-color: white;
+      color: #87CEEB;
+    }
+    .back-to-top {
     position: fixed;
     bottom: 20px;
     left: 50%;

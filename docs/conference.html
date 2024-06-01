@@ -205,13 +205,21 @@ ul.task-list li input[type="checkbox"] {
   }
   .navbar .nav-link[aria-expanded="true"], .navbar .dropdown-menu a {
     color: black;
-    background-color: white;
+    background-color: #87CEEB;
   }
   .navbar.dark-mode .nav-link[aria-expanded="true"], .navbar.dark-mode .dropdown-menu a {
     color: white;
     background-color: #343a40;
   }
-  .back-to-top {
+    .navbar .dropdown-menu a {
+      color: black;
+      background-color: white;
+    }
+    .navbar .dropdown-menu a:hover {
+      background-color: white;
+      color: #87CEEB;
+    }
+    .back-to-top {
     position: fixed;
     bottom: 20px;
     left: 50%;
@@ -281,6 +289,14 @@ ul.task-list li input[type="checkbox"] {
   }
   .dark-mode details > summary {
     color: white !important;
+  }
+  .navbar .nav-link:hover, .navbar a:hover {
+    color: white;
+    background-color: #87CEEB;
+  }
+  .navbar.dark-mode .nav-link:hover, .navbar.dark-mode a:hover {
+    color: #87CEEB;
+    background-color: #343a40;
   }
 </style>
 
