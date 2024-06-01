@@ -6,6 +6,9 @@ title: " "
 body {
     font-size: 15px;
 }
+nav button {
+    all: unset;
+}
 </style>
 
 ### Conference Presentations

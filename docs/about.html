@@ -151,6 +151,7 @@ ul.task-list li input[type="checkbox"] {
   body {
     font-family: 'Arial', sans-serif;
     background-color: white;
+    font-size: 15px;
     color: black;
     transition: background-color 0s, color 0s;
   }
@@ -236,11 +237,69 @@ ul.task-list li input[type="checkbox"] {
   body.dark-mode .back-to-top:hover {
     background-color: #87CEEB;
   }
+  .navbar .nav-link.active {
+  background-color: #87CEEB; /* Light mode active link background */
+  color: white; /* Light mode active link text color */
+}
+.navbar.dark-mode .nav-link.active {
+  background-color: transparent; /* Dark mode active link background */
+  color: #87CEEB; /* Dark mode active link text color */
+}
+  .circle-img {
+    border-radius: 50%;
+    width: 270px;
+    height: 260px;
+    object-fit: cover;
+  }
+  details {
+    position: relative;
+  }
+  details > summary {
+    color: #333333;
+    font-size: 24px;
+    list-style: none;
+    cursor: pointer;
+    outline: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none; 
+  }
+  details > summary:before {
+    content: "+";
+    display: inline-block;
+    width: 25px; 
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    background: #87CEEB; 
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  details[open] > summary:before {
+    content: "−";
+  }
+  .dark-mode details > summary {
+    color: white !important;
+  }
+  .navbar .nav-link:hover, .navbar a:hover {
+    color: white;
+    background-color: #87CEEB;
+  }
+  .navbar.dark-mode .nav-link:hover, .navbar.dark-mode a:hover {
+    color: #87CEFA; /* Different text color for hover in dark mode */
+    background-color: #343a40; /* Darker background color for hover in dark mode */
+  }
 </style>
 
 
 
 
+<style>
+nav button {
+    all: unset;
+}
+</style>
 <div style="height: 20px;">
 
 </div>

@@ -1,9 +1,15 @@
 ---
 title: " "
 ---
+
 <style>
 body {
     font-size: 15px;
+}
+nav button {
+    all: unset;
+}
+body > button { 
 }
 </style>
 

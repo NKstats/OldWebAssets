@@ -4,6 +4,11 @@ format: html
 jupyter: python3
 ---
 
+<style>
+nav button {
+    all: unset;
+}
+</style>
 
 <div style="height: 20px;"></div>
 

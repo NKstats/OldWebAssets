@@ -52,6 +52,9 @@ button.send-button:hover {
     background-color: #87CEEB;
     color: white;
 }
+nav button {
+    all: unset;
+}
 </style>
 
 <div style="height: 20px;"></div>
