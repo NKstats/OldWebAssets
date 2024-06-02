@@ -40,7 +40,7 @@ button {
 }
 button.send-button {
     font-size: 16px;
-    padding: 2px 25px;
+    padding: 2px 15px;
     background-color: transparent;
     color: black;
     border: 1px solid #ccc;

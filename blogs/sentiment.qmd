@@ -18,46 +18,8 @@ output:
 
 
 <style>
-.circle-img {
-  border-radius: 50%;
-  width: 300px;
-  height: 280px;
-  object-fit: cover;
-}
-body {
-    font-size: 16px;
-}
-.justify-text {
-  text-align: justify;
-  text-justify: inter-word;
-}
-details {
-  position: relative;
-}
-details > summary {
-  color: #333333;
-  font-size: 24px;
-  list-style: none;
-  cursor: pointer;
-  outline: none;
-}
-details > summary::-webkit-details-marker {
-  display: none; 
-}
-details > summary:before {
-  content: "+";
-  display: inline-block;
-  width: 25px; 
-  height: 25px;
-  line-height: 25px;
-  text-align: center;
-  background: #87CEEB; 
-  border: 1px solid #ccc;
-  margin-right: 10px;
-  font-size: 16px;
-}
-details[open] > summary:before {
-  content: "−";
+nav button {
+    all: unset;
 }
 </style>
 
