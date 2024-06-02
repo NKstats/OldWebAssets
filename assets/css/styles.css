@@ -40,8 +40,7 @@ body.dark-mode #contactForm textarea {
   transition: color 0s;
 }
 .navbar .navbar-brand {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 24px;
   color: #343a40;
 }
 body.dark-mode, .navbar.dark-mode {
