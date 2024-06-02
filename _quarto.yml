@@ -3,7 +3,8 @@ project:
   output-dir: docs
 
 website:
-  title: "S. Eshun"
+  title: "S.Eshun"
+  site-url: "https://nkstats.github.io/eshuns/"
   page-navigation: true
   navbar:
     right:

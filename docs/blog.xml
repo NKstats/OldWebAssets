@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>S. Eshun</title>
+<link>https://nkstats.github.io/eshuns/blog.html</link>
+<atom:link href="https://nkstats.github.io/eshuns/blog.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.4.553</generator>
+<lastBuildDate>Mon, 11 Apr 2022 05:00:00 GMT</lastBuildDate>
+<item>
+  <title>Text Preprocessing for Sentiment Analysis</title>
+  <dc:creator>Solomon Eshun</dc:creator>
+  <link>https://nkstats.github.io/eshuns/blogs/sentiment.html</link>
+  <description><![CDATA[ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/styles.css">
+
+
+
+
+<style>
+nav button {
+    all: unset;
+}
+</style>
+<div style="height: 20px;">
+
+</div>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ol type="1">
+<li>Introduction &amp; Method</li>
+<li>Python Implementation</li>
+</ol>
+</section>
+<section id="Introduction-1" class="level2">
+<h2 class="anchored" data-anchor-id="Introduction-1">Introduction &amp; Method</h2>
+<p>Sentiment analysis is a critical component of natural language processing (NLP) that helps decipher the emotional tone behind words. This analysis is particularly valuable not only in social media monitoring and market research but also in public health initiatives. Understanding public sentiment can significantly enhance health communication strategies, patient engagement, and policy formulation. Moreover, in public health crises, sentiment analysis can help track community reactions to health advisories or public sentiment toward vaccination drives, thus informing more targeted health communication and intervention strategies. However, the effectiveness of sentiment analysis in these sensitive areas is heavily reliant on the quality of preprocessing applied to text data. This post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.</p>
+<div style="text-align: center;">
+<p><img src="https://nkstats.github.io/eshuns/imgs/Fig1.png" width="85%"></p>
+</div>
+<p>Here’s a detailed breakdown of the preprocessing techniques I employed to refine the raw tweet data:</p>
+<ol type="1">
+<li><p><u>URL Removal</u>: I began by stripping URLs from the texts. URLs usually don’t contribute to sentiment and can add irrelevant noise to the text, so removing them helps in focusing on meaningful content.</p></li>
+<li><p><u>Tokenization</u>: Next, I tokenized the text by splitting the texts into individual words. This is crucial as it allows us to process the text at the word level, which is essential for the subsequent cleaning and analysis steps.</p></li>
+<li><p><u>Removing Stopwords</u>: I then removed stopwords - common words such as “the,” “and,” “is,” etc., which are abundant in English but do not carry significant sentiment. Eliminating these words helps reduce textual noise and focuses the analysis on more impactful words that convey sentiment.</p></li>
+<li><p><u>Eliminating Special Characters</u>: I also scrubbed the text of special characters like punctuation marks, symbols and emojis. These characters do not typically contribute to sentiment and can impede the performance of sentiment analysis models.</p></li>
+<li><p><u>Lemmatization</u>: Finally, I applied lemmatization to consolidate similar words to their base or dictionary forms. Unlike stemming, which simply chops off the ends of words to reach a common base, lemmatization considers the context and morphological analysis of words to accurately transform them to their lemma. This process reduces the number of unique words the model must handle, enhancing its ability to generalize across different variations of the same word.</p></li>
+</ol>
+<p>Through these text preprocessing steps, I transformed the raw text data into a clean and standardized format. This preparation is vital for conducting accurate sentiment analysis as it helps eliminate noise, reduce the complexity of the data, and focus on the most impactful elements of the text. The preprocessed texts are now ready for further analysis and can be effectively used in sentiment classification models to understand public sentiment.</p>
+</section>
+<section id="Python-codes-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="Python-codes-implementation">Python Implementation</h2>
+<p>Before creating the preprocessing function, it’s essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.</p>
+<div id="3399e206" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Install the emoji package before loading</span></span>
+<span id="cb1-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>pip install emoji</span></code></pre></div>
+</div>
+<div id="2207d073" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load Required packages</span></span>
+<span id="cb2-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb2-3">pd.set_option(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'display.max_colwidth'</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>)</span>
+<span id="cb2-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb2-5"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> nltk, re, emoji, spacy</span>
+<span id="cb2-6"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> nltk.stem <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> WordNetLemmatizer</span>
+<span id="cb2-7"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> nltk.corpus <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> stopwords</span>
+<span id="cb2-8"></span>
+<span id="cb2-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Download necessary NLTK resources</span></span>
+<span id="cb2-10">nltk.download(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'stopwords'</span>)</span>
+<span id="cb2-11">nltk.download(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'punkt'</span>)</span>
+<span id="cb2-12">nltk.download(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'wordnet'</span>)</span></code></pre></div>
+</div>
+<div style="height: 20px;">
+
+</div>
+<p>The <code>preprocess_text</code> function below incorporates all the preprocessing steps discussed in the Introduction &amp; Method section. It is structured to be reusable for any text dataset that requires cleaning for sentiment analysis.</p>
+<div id="0af240c7" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load the spaCy model</span></span>
+<span id="cb3-2">nlp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> spacy.load(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"en_core_web_sm"</span>)</span>
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> preprocess_text(data):</span>
+<span id="cb3-5">    processed_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb3-6">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Set of English stopwords</span></span>
+<span id="cb3-7">    stop <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">set</span>(stopwords.words(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'english'</span>))</span>
+<span id="cb3-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> sentence <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> data:</span>
+<span id="cb3-9">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove URLs</span></span>
+<span id="cb3-10">        text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.sub(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r'https?://\S+|www\.\S+'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, sentence)</span>
+<span id="cb3-11"></span>
+<span id="cb3-12">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove emojis using the emoji library</span></span>
+<span id="cb3-13">        text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> emoji.replace_emoji(text, replace<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>)</span>
+<span id="cb3-14"></span>
+<span id="cb3-15">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create spaCy doc object</span></span>
+<span id="cb3-16">        doc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> nlp(text)</span>
+<span id="cb3-17"></span>
+<span id="cb3-18">        lem_list <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> []</span>
+<span id="cb3-19">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> token <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> doc:</span>
+<span id="cb3-20">            <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> token.is_alpha <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">and</span> token.text.lower() <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">not</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> stop:  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check if token is alphabetic and not a stopword</span></span>
+<span id="cb3-21">                <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> token.pos_ <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PRON"</span>:  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Exclude all pronouns</span></span>
+<span id="cb3-22">                    lem_list.append(token.lemma_.lower())</span>
+<span id="cb3-23"></span>
+<span id="cb3-24">        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Rejoin words to form the final cleaned text</span></span>
+<span id="cb3-25">        final_text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">' '</span>.join(lem_list)</span>
+<span id="cb3-26">        processed_data.append(final_text)</span>
+<span id="cb3-27"></span>
+<span id="cb3-28">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> processed_data</span></code></pre></div>
+</div>
+<div style="height: 20px;">
+
+</div>
+<p>To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.</p>
+<div id="647d530d" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sample input text</span></span>
+<span id="cb4-2">sample_text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The pandemic has affected the world.. @100% https://example.com!! :)"</span>]</span>
+<span id="cb4-3">cleaned_text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> preprocess_text(sample_text)</span>
+<span id="cb4-4">cleaned_text</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>['pandemic affect world']</code></pre>
+</div>
+</div>
+<div style="height: 20px;">
+
+</div>
+<p>Next, I create a DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.</p>
+<div id="820717ac" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Creating a sample DataFrame with texts</span></span>
+<span id="cb6-2"></span>
+<span id="cb6-3">data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb6-4">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Review'</span>: [</span>
+<span id="cb6-5">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lockdown was necessary for our safety, I fully support it! 😊"</span>,</span>
+<span id="cb6-6">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"I understand the need but it was too long. 😕"</span>,</span>
+<span id="cb6-7">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lockdown completely disrupted my life, it was terrible. 😡"</span>,</span>
+<span id="cb6-8">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"It was well-handled and necessary for public health. 🏥"</span>,</span>
+<span id="cb6-9">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lockdown helped us control the virus spread. 😷"</span>,</span>
+<span id="cb6-10">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"It was too restrictive and unnecessary for so long. 😒"</span>,</span>
+<span id="cb6-11">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Not sure if lockdown was the best solution, but we had no choice. 🤷"</span>,</span>
+<span id="cb6-12">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"It saved lives, but at a great personal cost to many. 😔"</span>,</span>
+<span id="cb6-13">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The government did what was necessary during the lockdown. 👍"</span>,</span>
+<span id="cb6-14">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lockdown was too harsh and not managed well. 😠"</span>,</span>
+<span id="cb6-15">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"It was a good measure, but I hated being stuck at home. 🏠😖"</span>,</span>
+<span id="cb6-16">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lockdown was essential but mental health suffered a lot. 🧠💔"</span>,</span>
+<span id="cb6-17">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The benefits outweigh the negatives of the lockdown. ➕➖"</span>,</span>
+<span id="cb6-18">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Poor execution made it harder than it should be. 😞"</span>,</span>
+<span id="cb6-19">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lockdown was over before it was truly safe to do so. 😨"</span>,</span>
+<span id="cb6-20">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"We needed the lockdown to protect vulnerable populations. 🛡️"</span>,</span>
+<span id="cb6-21">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The economic impact of lockdown was devastating. 💸"</span>,</span>
+<span id="cb6-22">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lockdown showed we can take collective action when needed. 🤝"</span>,</span>
+<span id="cb6-23">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"It was necessary, but the government support was insufficient. 💔"</span>,</span>
+<span id="cb6-24">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lockdown should have been stricter to be more effective. ⚠️"</span></span>
+<span id="cb6-25">    ],</span>
+<span id="cb6-26">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Sentiment_Rating'</span>: [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>]</span>
+<span id="cb6-27">}</span>
+<span id="cb6-28"></span>
+<span id="cb6-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Creating the DataFrame</span></span>
+<span id="cb6-30">reviews_df <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.DataFrame(data)</span>
+<span id="cb6-31"></span>
+<span id="cb6-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Applying the text preprocessing function</span></span>
+<span id="cb6-33">reviews_df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Cleaned_Review'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> preprocess_text(reviews_df[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Review'</span>].tolist())</span>
+<span id="cb6-34">reviews_df</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Review</th>
+<th data-quarto-table-cell-role="th">Sentiment_Rating</th>
+<th data-quarto-table-cell-role="th">Cleaned_Review</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Lockdown was necessary for our safety, I fully support it! 😊</td>
+<td>5</td>
+<td>lockdown necessary safety fully support</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>I understand the need but it was too long. 😕</td>
+<td>3</td>
+<td>understand need long</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Lockdown completely disrupted my life, it was terrible. 😡</td>
+<td>1</td>
+<td>lockdown completely disrupt life terrible</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>It was well-handled and necessary for public health. 🏥</td>
+<td>4</td>
+<td>well handle necessary public health</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Lockdown helped us control the virus spread. 😷</td>
+<td>5</td>
+<td>lockdown help control virus spread</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>It was too restrictive and unnecessary for so long. 😒</td>
+<td>2</td>
+<td>restrictive unnecessary long</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Not sure if lockdown was the best solution, but we had no choice. 🤷</td>
+<td>3</td>
+<td>sure lockdown good solution choice</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>It saved lives, but at a great personal cost to many. 😔</td>
+<td>3</td>
+<td>save life great personal cost many</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>The government did what was necessary during the lockdown. 👍</td>
+<td>4</td>
+<td>government necessary lockdown</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Lockdown was too harsh and not managed well. 😠</td>
+<td>1</td>
+<td>lockdown harsh manage well</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>It was a good measure, but I hated being stuck at home. 🏠😖</td>
+<td>3</td>
+<td>good measure hate stick home</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Lockdown was essential but mental health suffered a lot. 🧠💔</td>
+<td>2</td>
+<td>lockdown essential mental health suffer lot</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>The benefits outweigh the negatives of the lockdown. ➕➖</td>
+<td>4</td>
+<td>benefit outweigh negative lockdown</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Poor execution made it harder than it should be. 😞</td>
+<td>2</td>
+<td>poor execution make hard</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>Lockdown was over before it was truly safe to do so. 😨</td>
+<td>3</td>
+<td>lockdown truly safe</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>We needed the lockdown to protect vulnerable populations. 🛡️</td>
+<td>5</td>
+<td>need lockdown protect vulnerable population</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>The economic impact of lockdown was devastating. 💸</td>
+<td>1</td>
+<td>economic impact lockdown devastating</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Lockdown showed we can take collective action when needed. 🤝</td>
+<td>4</td>
+<td>lockdown show take collective action need</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>It was necessary, but the government support was insufficient. 💔</td>
+<td>2</td>
+<td>necessary government support insufficient</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Lockdown should have been stricter to be more effective. ⚠️</td>
+<td>4</td>
+<td>lockdown strict effective</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>Programming</category>
+  <guid>https://nkstats.github.io/eshuns/blogs/sentiment.html</guid>
+  <pubDate>Mon, 11 Apr 2022 05:00:00 GMT</pubDate>
+  <media:content url="https://nkstats.github.io/eshuns/imgs/senti.png" medium="image" type="image/png" height="66" width="144"/>
+</item>
+</channel>
+</rss>
