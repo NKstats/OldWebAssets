@@ -7,10 +7,10 @@ function toggleDarkMode() {
     var text = document.querySelector('#theme-toggle span');
     if (body.classList.contains('dark-mode')) {
       icon.className = 'fa fa-sun';
-      text.textContent = ' Light';
+      text.textContent = '';
     } else {
       icon.className = 'fa fa-moon';
-      text.textContent = ' Dark';
+      text.textContent = '';
     }
     localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
   }
@@ -25,12 +25,12 @@ function toggleDarkMode() {
       body.classList.add('dark-mode');
       navbar.classList.add('dark-mode');
       icon.className = 'fa fa-sun';
-      text.textContent = ' Light';
+      text.textContent = '';
     } else {
       body.classList.remove('dark-mode');
       navbar.classList.remove('dark-mode');
       icon.className = 'fa fa-moon';
-      text.textContent = ' Dark';
+      text.textContent = '';
     }
   }
 
@@ -38,7 +38,7 @@ function toggleDarkMode() {
     var navbarLeft = document.querySelector('.navbar .navbar-nav:first-child');
     var toggleLink = document.createElement('li');
     toggleLink.className = 'nav-item';
-    toggleLink.innerHTML = '<a href="#" onclick="toggleDarkMode()" class="nav-link" id="theme-toggle"><i class="fa fa-moon"></i><span> Dark</span></a>';
+    toggleLink.innerHTML = '<a href="#" onclick="toggleDarkMode()" class="nav-link" id="theme-toggle"><i class="fa fa-moon"></i><span></span></a>';
     navbarLeft.appendChild(toggleLink);
     applyThemePreference();
 

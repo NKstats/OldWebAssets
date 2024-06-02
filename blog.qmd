@@ -24,7 +24,7 @@ nav button {
 
 <div style="height: 20px;"></div>
 
-Welcome to the NKstats Blog! Explore my latest posts below.
+Welcome to my blog! Check out my latest posts below. I'm open to suggestions and to learn new things, so feel free to get in touch!
 
 <div style="height: 20px;"></div>
 
