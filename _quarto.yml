@@ -7,6 +7,7 @@ website:
   site-url: "https://nkstats.github.io/eshuns/"
   page-navigation: true
   navbar:
+    pinned: true
     right:
       - text: "Home"
         href: home.html
@@ -31,6 +32,7 @@ format:
   html:
     katex: true
     theme: cosmo
+    highlight-style: mytheme.theme #monokai
     include-before: |
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       <link rel="stylesheet" href="/assets/css/styles.css">

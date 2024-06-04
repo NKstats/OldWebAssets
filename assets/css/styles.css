@@ -155,12 +155,12 @@ details[open] > summary:before {
 }
 
 pre.light-mode {
-  background-color: #f8f8f8;
+  background-color: white;
   color: #000000;
 }
 
 code.light-mode {
-  background-color: #f8f8f8;
+  background-color: white;
   color: #000000;
 }
 

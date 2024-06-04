@@ -40,10 +40,11 @@ nav button {
 Sentiment analysis is a critical component of natural language processing (NLP) that helps decipher the emotional tone behind words. This analysis is particularly valuable not only in social media monitoring and market research but also in public health initiatives. Understanding public sentiment can significantly enhance health communication strategies, patient engagement, and policy formulation. Moreover, in public health crises, sentiment analysis can help track community reactions to health advisories or public sentiment toward vaccination drives, thus informing more targeted health communication and intervention strategies. However, the effectiveness of sentiment analysis in these sensitive areas is heavily reliant on the quality of preprocessing applied to text data. This post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.
 
 <div style="text-align: center;">
-  <img src="/imgs/Fig1.png" width="85%">
+![](/imgs/Fig1.png){.lightbox width=85%}
 </div>
 
 Here’s a detailed breakdown of the preprocessing techniques I employed to refine the raw tweet data:
+
 
 1. <u>URL Removal</u>: I began by stripping URLs from the texts. URLs usually don't contribute to sentiment and can add irrelevant noise to the text, so removing them helps in focusing on meaningful content.
 
