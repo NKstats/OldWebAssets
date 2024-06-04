@@ -56,16 +56,19 @@ nav button {
 <section id="Python-codes-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="Python-codes-implementation">Python Implementation</h2>
 <p>Before creating the preprocessing function, it’s essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.</p>
-<div id="a0fb9eb7" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-wrapper">
+<div id="44c8739c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Install the emoji package before loading</span></span>
 <span id="cb1-2"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>pip install emoji</span></code></pre></div>
 </div>
-<div id="e48fbe95" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+</div>
+<div class="code-wrapper">
+<div id="19533e49" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Load Required packages</span></span>
 <span id="cb2-2"><span class="im" style="color: #00769E;
@@ -110,12 +113,14 @@ font-style: inherit;">'punkt'</span>)</span>
 background-color: null;
 font-style: inherit;">'wordnet'</span>)</span></code></pre></div>
 </div>
+</div>
 <div style="height: 20px;">
 
 </div>
 <p>The <code>preprocess_text</code> function below incorporates all the preprocessing steps discussed in the Introduction &amp; Method section. It is structured to be reusable for any text dataset that requires cleaning for sentiment analysis.</p>
-<div id="25dc2c95" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-wrapper">
+<div id="1b859efc" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Load the spaCy model</span></span>
 <span id="cb3-2">nlp <span class="op" style="color: #5E5E5E;
@@ -218,12 +223,14 @@ font-style: inherit;">' '</span>.join(lem_list)</span>
 background-color: null;
 font-style: inherit;">return</span> processed_data</span></code></pre></div>
 </div>
+</div>
 <div style="height: 20px;">
 
 </div>
 <p>To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.</p>
-<div id="2c1559b6" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-wrapper">
+<div id="c319e022" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Sample input text</span></span>
 <span id="cb4-2">sample_text <span class="op" style="color: #5E5E5E;
@@ -239,12 +246,14 @@ font-style: inherit;">=</span> preprocess_text(sample_text)</span>
 <pre><code>['pandemic affect world']</code></pre>
 </div>
 </div>
+</div>
 <div style="height: 20px;">
 
 </div>
 <p>Next, I create a DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.</p>
-<div id="b1e99449" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="code-wrapper">
+<div id="564b6700" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Creating a sample DataFrame with texts</span></span>
 <span id="cb6-2"></span>
@@ -516,6 +525,7 @@ font-style: inherit;">'Review'</span>].tolist())</span>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>

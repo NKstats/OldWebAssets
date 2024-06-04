@@ -1,6 +1,8 @@
 ---
 title: "Text Preprocessing for Sentiment Analysis"
-format: html
+format:
+  html:
+    code-copy: false
 jupyter: python3
 author: "Solomon Eshun"
 date: 2022-04-11
@@ -62,16 +64,21 @@ Through these text preprocessing steps, I transformed the raw text data into a c
 
 Before creating the preprocessing function, it's essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.
 
+<div class="code-wrapper">
 ```{python}
+#| code-overflow: wrap
 #| eval: false
 
 # Install the emoji package before loading
 !pip install emoji
 
 ```
+</div>
 
+
+<div class="code-wrapper">
 ```{python}
-
+#| code-overflow: wrap
 #| output: false
 
 # Load Required packages
@@ -88,13 +95,17 @@ nltk.download('punkt')
 nltk.download('wordnet')
 
 ```
+</div>
+
 
 <div style="height: 20px;"></div>
 
 The `preprocess_text` function below incorporates all the preprocessing steps discussed in the [Introduction & Method](#Introduction-1) section. It is structured to be reusable for any text dataset that requires cleaning for sentiment analysis.
 
 
+<div class="code-wrapper">
 ```{python}
+#| code-overflow: wrap
 
 # Load the spaCy model
 nlp = spacy.load("en_core_web_sm")
@@ -129,12 +140,15 @@ def preprocess_text(data):
 
   
 ```
+</div>
 
 <div style="height: 20px;"></div>
 
 To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.
 
+<div class="code-wrapper">
 ```{python}
+#| code-overflow: wrap
 
 # Sample input text
 sample_text = ["The pandemic has affected the world.. @100% https://example.com!! :)"]
@@ -142,12 +156,15 @@ cleaned_text = preprocess_text(sample_text)
 cleaned_text
 
 ```
+</div>
 
 <div style="height: 20px;"></div>
 
 Next, I create a DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.
 
+<div class="code-wrapper">
 ```{python}
+#| code-overflow: wrap
 # Creating a sample DataFrame with texts
 
 data = {
@@ -183,5 +200,6 @@ reviews_df = pd.DataFrame(data)
 reviews_df['Cleaned_Review'] = preprocess_text(reviews_df['Review'].tolist())
 reviews_df
 ```
+</div>
 
 

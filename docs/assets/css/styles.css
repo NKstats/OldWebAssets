@@ -150,3 +150,79 @@ details[open] > summary:before {
   color: #87CEEB;
   background-color: #343a40;
 }
+#theme-toggle {
+  font-size: 20px;
+}
+
+pre.light-mode {
+  background-color: #f8f8f8;
+  color: #000000;
+}
+
+code.light-mode {
+  background-color: #f8f8f8;
+  color: #000000;
+}
+
+pre.dark-mode, code.dark-mode {
+  background-color: black;
+  color: #ffffff;
+}
+
+.code-wrapper {
+  position: relative;
+  margin-bottom: 1.5em;
+}
+.code-wrapper pre {
+  color: #000000;
+}
+body.dark-mode .code-wrapper pre {
+  color: #ffffff;
+}
+
+.copy-icon, .mode-icon {
+  position: absolute;
+  top: 10px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.copy-icon {
+  right: 10px;
+  color: #555; /* Light color for copy icon */
+}
+
+.mode-icon {
+  right: 40px; /* Position it to the left of the copy icon */
+}
+
+body.dark-mode .copy-icon {
+  color: white; /* Dark color for copy icon in dark mode */
+}
+
+pre.dark-mode + .copy-icon {
+  color: white; /* Light color for copy icon when code chunk is in dark mode */
+}
+
+.copy-tooltip {
+  position: absolute;
+  top: -25px;
+  right: 10px;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+
+
+
+
+

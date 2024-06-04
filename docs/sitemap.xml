@@ -2,15 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nkstats.github.io/eshuns/blog.html</loc>
-    <lastmod>2024-06-02T19:25:34.145Z</lastmod>
+    <lastmod>2024-06-03T22:24:07.831Z</lastmod>
   </url>
   <url>
     <loc>https://nkstats.github.io/eshuns/home.html</loc>
-    <lastmod>2024-06-02T19:16:53.765Z</lastmod>
+    <lastmod>2024-06-04T00:42:19.709Z</lastmod>
   </url>
   <url>
     <loc>https://nkstats.github.io/eshuns/conference.html</loc>
     <lastmod>2024-06-02T19:15:32.665Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nkstats.github.io/eshuns/blogs/code_check.html</loc>
+    <lastmod>2024-06-03T22:00:45.655Z</lastmod>
   </url>
   <url>
     <loc>https://nkstats.github.io/eshuns/research.html</loc>
@@ -18,7 +22,7 @@
   </url>
   <url>
     <loc>https://nkstats.github.io/eshuns/blogs/sentiment.html</loc>
-    <lastmod>2024-06-02T19:15:32.665Z</lastmod>
+    <lastmod>2024-06-04T00:38:05.657Z</lastmod>
   </url>
   <url>
     <loc>https://nkstats.github.io/eshuns/contact.html</loc>
