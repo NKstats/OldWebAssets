@@ -17,15 +17,15 @@ website:
       - text: "Research & Teaching"
         menu:
           - text: "Research"
-            href: ../research/index.html
+            href: "./research/index.html"
           - text: "Presentation"
-            href: ../conference/index.html
+            href: "./conference/index.html"
           - text: "Teaching"
-            href: ../teaching/index.html
+            href: "./teaching/index.html"
       - text: "Posts"
-        href: ../posts/index.html
+        href: "./posts/index.html"
       - icon: envelope
-        href: ../contact/index.html
+        href: "./contact/index.html"
       - icon: github
         href: https://github.com/NKstats
       - icon: linkedin

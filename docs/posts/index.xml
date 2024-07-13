@@ -75,7 +75,7 @@ a:hover {
 <h2 class="anchored" data-anchor-id="Python-codes-implementation">Python Implementation</h2>
 <p>Before creating the preprocessing function, it’s essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.</p>
 <div class="code-wrapper">
-<div id="85af91ab" class="cell" data-execution_count="1">
+<div id="f46481ae" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Install the emoji package before loading</span></span>
@@ -85,7 +85,7 @@ font-style: inherit;">!</span>pip install emoji</span></code></pre></div>
 </div>
 </div>
 <div class="code-wrapper">
-<div id="31d26c16" class="cell" data-execution_count="2">
+<div id="3641eca3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Load Required packages</span></span>
@@ -137,7 +137,7 @@ font-style: inherit;">'wordnet'</span>)</span></code></pre></div>
 </div>
 <p>The <code>preprocess_text</code> function below incorporates all the preprocessing steps discussed in the Introduction &amp; Method section. It is structured to be reusable for any text dataset that requires cleaning for sentiment analysis.</p>
 <div class="code-wrapper">
-<div id="e3ca32e5" class="cell" data-execution_count="3">
+<div id="aa335b6f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Load the spaCy model</span></span>
@@ -258,7 +258,7 @@ font-style: inherit;">return</span> processed_data</span></code></pre></div>
 </div>
 <p>To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.</p>
 <div class="code-wrapper">
-<div id="f6f5397e" class="cell" data-execution_count="4">
+<div id="ec9a036c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Sample input text</span></span>
@@ -278,7 +278,7 @@ font-style: inherit;">=</span> preprocess_text(sample_text)</span>
 </div>
 <p>Next, I create a DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.</p>
 <div class="code-wrapper">
-<div id="d1de0395" class="cell" data-execution_count="5">
+<div id="472daf2e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Creating a sample DataFrame with texts</span></span>
@@ -557,7 +557,7 @@ font-style: inherit;">'Review'</span>].tolist())</span>
 <p>To gain insights into the most frequently mentioned words in the reviews, I created a word cloud. This is a visual representation of the text data, where the size of each word indicates its frequency or importance. Here, I have used the most common words from the cleaned review data.</p>
 <p>The word cloud visualization highlighted the most frequently mentioned words in the reviews, offering a quick and intuitive understanding of the main themes and sentiments expressed. Larger words appear more often in the reviews.</p>
 <div class="code-wrapper">
-<div id="bbf724ac" class="cell" data-fig="true" data-execution_count="6">
+<div id="061a3c78" class="cell" data-fig="true" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> wordcloud <span class="im" style="color: #00769E;
