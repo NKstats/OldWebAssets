@@ -1,0 +1,113 @@
+---
+format: html
+---
+
+<style>
+    body {
+        font-size: 14px;
+    }
+    nav button {
+        all: unset;
+    }
+    .like-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    .like-button:hover {
+        background-color: #0056b3;
+    }
+    .like-button.disabled {
+        background-color: #d3d3d3;
+        cursor: not-allowed;
+    }
+    .like-count {
+        margin-left: 10px;
+        font-size: 1.2em;
+    }
+</style>
+
+### Teaching
+
+
+<div style="height: 10px;"></div>
+
+1. Will fix this page later!!!
+
+## Teaching Experience
+
+*Department of Mathematics, Iowa State University*
+
+Steganography & Digital Image Forensics ([Dr. Jennifer Newman](https://faculty.sites.iastate.edu/jlnewman/)), Spring 2024
+
+\vspace{-0.5em}
+
+Introduction to Proofs ([Dr. Jonathan Smith](https://faculty.sites.iastate.edu/jdhsmith/)), Fall 2023
+
+\vspace{0.3em}
+
+*School of Mathematical & Statistical Sciences, UTRGV*
+
+Graduate Student Instructor, Elementary Statistical Methods, Spring 2023 & Fall 2022
+
+\vspace{-0.5em}
+
+Applied Statistics for Health ([Dr. George Yanev](https://faculty.utrgv.edu/george.yanev/)), Spring 2023 & Fall 2022
+
+\vspace{-0.5em}
+
+Introduction to Simulation, Mathematical Statistics ([Dr. Tamer Oraby](https://faculty.utrgv.edu/tamer.oraby/index.htm)), Spring 2023
+
+\vspace{-0.5em}
+
+Applied Statistics ([Dr. Xiaohui Wang](https://faculty.utrgv.edu/xiaohui.wang/)), Fall 2022 & Fall 2021
+
+\vspace{0.3em}
+
+*Department of Mathematical Sciences, UMaT*
+
+Differential Equations, Special Mathematical Functions ([Dr. Peter Nyarko](https://www.umat.edu.gh/staffinfo/staffDetailed.php?contactID=30)), Spring 2021
+
+\vspace{-0.5em}
+
+Mathematical Methods ([Dr. Monica Crankson](https://www.umat.edu.gh/staffinfo/staffDetailed.php?contactID=362)), Fall 2020
+
+
+<button class="like-button" id="likeButton" onclick="incrementLike()">Like</button>
+<span class="like-count" id="likeCount">0</span>
+
+<script>
+    // Function to check if the user has already liked and set the initial like count
+    function initializeLikeButton() {
+        var likeCount = localStorage.getItem('likeCount') || 0;
+        var liked = localStorage.getItem('liked') === 'true';
+
+        document.getElementById("likeCount").innerText = likeCount;
+
+        if (liked) {
+            document.getElementById('likeButton').classList.add('disabled');
+            document.getElementById('likeButton').disabled = true;
+        }
+    }
+
+    // Increment the like count
+    function incrementLike() {
+        var likeCount = parseInt(localStorage.getItem('likeCount')) || 0;
+        if (localStorage.getItem('liked') !== 'true') {
+            likeCount++;
+            document.getElementById("likeCount").innerText = likeCount;
+            localStorage.setItem('likeCount', likeCount);
+            localStorage.setItem('liked', 'true');
+            document.getElementById('likeButton').classList.add('disabled');
+            document.getElementById('likeButton').disabled = true;
+        }
+    }
+
+    // Initialize the like button on page load
+    window.onload = initializeLikeButton;
+</script>

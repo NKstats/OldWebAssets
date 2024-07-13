@@ -17,6 +17,8 @@ function toggleDarkMode() {
     }
     localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
   }
+  
+
 
   function applyThemePreference() {
     var body = document.body;
@@ -54,8 +56,8 @@ function toggleDarkMode() {
     button.className = 'back-to-top';
     document.body.appendChild(button);
     button.onclick = function() {
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     };
     window.onscroll = function() {
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -80,19 +82,19 @@ function toggleDarkMode() {
       pre.classList.add('dark-mode');
       code.classList.remove('light-mode');
       code.classList.add('dark-mode');
-      copyIcon.style.color = 'white'; // Light color for copy icon in dark mode
+      copyIcon.style.color = 'white';
       modeIcon.classList.remove('fa-moon');
       modeIcon.classList.add('fa-sun');
-      modeIcon.style.color = '#ffffff'; // White color for sun icon
+      modeIcon.style.color = '#ffffff';
     } else {
       pre.classList.remove('dark-mode');
       pre.classList.add('light-mode');
       code.classList.remove('dark-mode');
       code.classList.add('light-mode');
-      copyIcon.style.color = 'black'; // Dark color for copy icon in light mode
+      copyIcon.style.color = 'black';
       modeIcon.classList.remove('fa-sun');
       modeIcon.classList.add('fa-moon');
-      modeIcon.style.color = '#000000'; // Dark color for moon icon
+      modeIcon.style.color = '#000000';
     }
   }
   
@@ -138,8 +140,8 @@ function toggleDarkMode() {
         code.classList.add('light-mode');
         modeIcon.classList.remove('fa-sun');
         modeIcon.classList.add('fa-moon');
-        modeIcon.style.color = '#000000'; // Dark color for moon icon
-        copyIcon.style.color = 'black'; // Dark color for copy icon
+        modeIcon.style.color = '#000000';
+        copyIcon.style.color = 'black';
       } else {
         pre.classList.remove('light-mode');
         pre.classList.add('dark-mode');
@@ -147,15 +149,14 @@ function toggleDarkMode() {
         code.classList.add('dark-mode');
         modeIcon.classList.remove('fa-moon');
         modeIcon.classList.add('fa-sun');
-        modeIcon.style.color = '#ffffff'; // White color for sun icon
-        copyIcon.style.color = 'white'; // Light color for copy icon
+        modeIcon.style.color = '#ffffff';
+        copyIcon.style.color = 'white';
       }
     });
 
-    applyInitialMode(wrapper); // Apply initial mode based on body mode
+    applyInitialMode(wrapper);
   });
   
-  // Listen for changes to the body's class attribute
   const observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
       if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
@@ -170,3 +171,17 @@ function toggleDarkMode() {
     attributes: true
   });
 });
+
+
+
+function expandAll() {
+  document.querySelectorAll('details').forEach(details => {
+    details.open = true;
+  });
+};
+
+function collapseAll() {
+  document.querySelectorAll('details').forEach(details => {
+    details.open = false;
+  });
+};

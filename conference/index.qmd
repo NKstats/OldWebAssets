@@ -1,10 +1,8 @@
----
-title: " "
----
+
 
 <style>
 body {
-    font-size: 15px;
+    font-size: 14px;
 }
 nav button {
     all: unset;
@@ -14,6 +12,8 @@ nav button {
 ### Conference Presentations
 
 <div style="height: 10px;"></div>
+
+1. L. Christenson, M. Balayar, N. Le, <u>S. Eshun</u>, H. &#x00C7;elik, "Data Science for Public Good: Community Capitals" (Oral), 2024 Iowa Technology \& Geospatial Conference (ITAG), West Des Moines, IA, 06/20/2024.
   
 1. "Estimating Gender Differences in Glioblastoma Outcomes using Propensity Score Matching" (Oral), 2<sup>nd</sup> Interdisciplinary Biological Sciences Symposium, Ames, IA, 04/03/2024
 
@@ -26,4 +26,6 @@ nav button {
 1. "Diagnosing CKD in Type 2 Diabetes Patients: A Machine Learning Approach" (Poster), 9<sup>th</sup> Annual TRACS Summit, Texas A&M, College Station, TX, 04/03/2023.
 
 1. "Diagnosing CKD & Heart Failure in Type 2 Diabetes Patients: A Machine Learning Approach" (Poster), School of Interdisciplinary Programs & Community Engagement (SIPCE) 2<sup>nd</sup> Annual Conference, Edinburg, TX, 03/30/2023.
+
+
 

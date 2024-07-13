@@ -44,7 +44,7 @@
             "selected-text-color" : "#859900"
         },
         "BuiltIn" : {
-            "text-color" : "red",
+            "text-color" : "#cb4b16",
             "selected-text-color" : "#cb4b16"
         },
         "Extension" : {
@@ -152,7 +152,7 @@
         }
    },
     "editor-colors": {
-        "BackgroundColor" : "red",
+        "BackgroundColor" : "#dfdac7",
         "CodeFolding" : "#6c71c4",
         "BracketMatching" : "#eee8d5",
         "CurrentLine" : "#eee8d5",

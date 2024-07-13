@@ -1,8 +1,11 @@
 project:
   type: website
   output-dir: docs
-
 website:
+  search: 
+    location: navbar
+    type: textbox
+    limit: 15
   title: "S.Eshun"
   site-url: "https://nkstats.github.io/eshuns/"
   page-navigation: true
@@ -10,29 +13,34 @@ website:
     pinned: true
     right:
       - text: "Home"
-        href: home.html
-      - text: "Research & Presentation"
+        href: index.html
+      - text: "Research & Teaching"
         menu:
-          - text: "Research Work"
-            href: research.html
+          - text: "Research"
+            href: ../research/index.html
           - text: "Presentation"
-            href: conference.html
-      - text: "Blog"
-        href: blog.html
+            href: ../conference/index.html
+          - text: "Teaching"
+            href: ../teaching/index.html
+      - text: "Posts"
+        href: ../posts/index.html
       - icon: envelope
-        href: contact.html
+        href: ../contact/index.html
       - icon: github
         href: https://github.com/NKstats
       - icon: linkedin
         href: https://www.linkedin.com/in/se3008
     left:
       - icon: "javascript:toggleDarkMode();"
-
+language: 
+  search-box-placeholder: "Search"
 format:
   html:
+    code-copy: true
+    smooth-scroll: true
     katex: true
     theme: cosmo
-    highlight-style: mytheme.theme #monokai
+    highlight-style: assets/mytheme.theme #monokai
     include-before: |
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       <link rel="stylesheet" href="/assets/css/styles.css">

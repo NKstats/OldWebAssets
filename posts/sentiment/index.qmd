@@ -5,9 +5,9 @@ format:
     code-copy: false
 jupyter: python3
 author: "Solomon Eshun"
-date: 2022-04-11
+date: 2023-04-11
 description: "A guide to pre-processing text data for sentiment analysis in Python."
-image: /imgs/senti.png
+image: "/assets/imgs/senti.png"
 categories: ["Programming"]
 tags: [" "]
 output: 
@@ -23,6 +23,9 @@ output:
 nav button {
     all: unset;
 }
+body {
+    font-size: 14px;
+}
 </style>
 
 
@@ -31,8 +34,25 @@ nav button {
 
 ## Outline
 
-1. [Introduction & Method](#Introduction-1)
-2. [Python Implementation](#Python-codes-implementation)
+<html>
+<head>
+<style>
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+1. <a href="#Introduction-1">Introduction & Method</a>
+2. <a href="#Python-codes-implementation">Python Implementation</a>
+
+</body>
+</html>
 
 
 ## Introduction & Method {#Introduction-1}
@@ -40,7 +60,7 @@ nav button {
 Sentiment analysis is a critical component of natural language processing (NLP) that helps decipher the emotional tone behind words. This analysis is particularly valuable not only in social media monitoring and market research but also in public health initiatives. Understanding public sentiment can significantly enhance health communication strategies, patient engagement, and policy formulation. Moreover, in public health crises, sentiment analysis can help track community reactions to health advisories or public sentiment toward vaccination drives, thus informing more targeted health communication and intervention strategies. However, the effectiveness of sentiment analysis in these sensitive areas is heavily reliant on the quality of preprocessing applied to text data. This post details my approach to preprocessing texts to enhance sentiment analysis. Through a series of carefully designed steps, I aim to transform raw text data into a clean, analyzable format, setting the stage for accurate classification.
 
 <div style="text-align: center;">
-![](/imgs/Fig1.png){.lightbox width=85%}
+![](/assets/imgs/Fig1.png){.lightbox width=85%}
 </div>
 
 Here’s a detailed breakdown of the preprocessing techniques I employed to refine the raw tweet data:
@@ -159,8 +179,6 @@ cleaned_text
 ```
 </div>
 
-<div style="height: 20px;"></div>
-
 Next, I create a DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.
 
 <div class="code-wrapper">
@@ -203,4 +221,49 @@ reviews_df
 ```
 </div>
 
+To gain insights into the most frequently mentioned words in the reviews, I created a word cloud. This is a visual representation of the text data, where the size of each word indicates its frequency or importance. Here, I have used the most common words from the cleaned review data.
 
+The word cloud visualization highlighted the most frequently mentioned words in the reviews, offering a quick and intuitive understanding of the main themes and sentiments expressed. Larger words appear more often in the reviews.
+
+<div class="code-wrapper">
+```{python}
+#| code-overflow: wrap
+#| fig: true
+#| lightbox: true
+
+from wordcloud import WordCloud, STOPWORDS
+import matplotlib.pyplot as plt
+from nltk.probability import FreqDist
+
+# Combine all reviews into a single string
+all_reviews = " ".join(review for review in reviews_df['Cleaned_Review'])
+
+# Split the reviews into words
+words = all_reviews.split()
+
+# Get the most common words
+top_words = FreqDist(words).most_common()
+top_words_text = " ".join(word for word, _ in top_words)
+
+# Set of stopwords to be excluded from the word cloud
+stopwords = set(STOPWORDS)
+
+# Generate the word cloud
+wordcloud = WordCloud(collocations=False, width=1000, height=600,
+                      stopwords=stopwords, max_words=300,
+                      background_color="white").generate(top_words_text)
+
+# Display the word cloud
+plt.figure(figsize=(22, 6.35), facecolor='white')
+plt.tight_layout(pad=2)
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+```
+</div>
+
+In this post, I covered the key steps for text preprocessing in sentiment analysis. By removing URLs and stopwords, tokenizing the text, eliminating special characters, and applying lemmatization, I turned raw text data into a clean, standardized format ready for further analysis. These preprocessing steps are crucial as they directly influence the accuracy of sentiment analysis models, ensuring the input data is both meaningful and relevant. Whether you're analyzing social media comments, customer reviews, or other text data, these techniques will help you identify valuable patterns and trends.
+
+I hope this guide has been useful and insightful for your sentiment analysis projects. If you have any questions, feedback, or additional suggestions, please feel free to get in touch. 
+
+Thank you for reading!

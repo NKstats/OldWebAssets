@@ -1,11 +1,11 @@
 ---
 title: ""
 listing:
-  contents: "/blogs/sentiment.qmd"
+  contents: "../sentiment/index.qmd"
   feed: true
   type: "grid"
   categories: true
-  fields: [image, date, title, description, author, categories]
+  fields: [image, date, title, description, author, categories, reading-time]
   filter-ui: true
   sort-ui: true
   sort: "date desc"

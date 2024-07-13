@@ -5,7 +5,7 @@
   --quarto-hl-va-color: #d22635;
   --quarto-hl-cf-color: #859900;
   --quarto-hl-op-color: #859900;
-  --quarto-hl-bu-color: red;
+  --quarto-hl-bu-color: #cb4b16;
   --quarto-hl-ex-color: #268bd2;
   --quarto-hl-pp-color: #cb4b16;
   --quarto-hl-at-color: #268bd2;
@@ -80,7 +80,7 @@ code span.op {
 }
 
 code span.bu {
-  color: red;
+  color: #cb4b16;
 }
 
 code span.ex {
