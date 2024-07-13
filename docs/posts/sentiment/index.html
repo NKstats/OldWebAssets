@@ -282,13 +282,13 @@ a:hover {
 <h2 class="anchored" data-anchor-id="Python-codes-implementation">Python Implementation</h2>
 <p>Before creating the preprocessing function, it’s essential to set up the environment with the required packages. This includes loading libraries and downloading necessary data for text manipulation.</p>
 <div class="code-wrapper">
-<div id="32d5a5fd" class="cell" data-execution_count="1">
+<div id="85af91ab" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the emoji package before loading</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install emoji</span></code></pre></div>
 </div>
 </div>
 <div class="code-wrapper">
-<div id="18aa6f46" class="cell" data-execution_count="2">
+<div id="31d26c16" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required packages</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_colwidth'</span>, <span class="va">None</span>)</span>
@@ -308,7 +308,7 @@ a:hover {
 </div>
 <p>The <code>preprocess_text</code> function below incorporates all the preprocessing steps discussed in the <a href="#Introduction-1">Introduction &amp; Method</a> section. It is structured to be reusable for any text dataset that requires cleaning for sentiment analysis.</p>
 <div class="code-wrapper">
-<div id="b8e32c9f" class="cell" data-execution_count="3">
+<div id="e3ca32e5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the spaCy model</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nlp <span class="op">=</span> spacy.load(<span class="st">"en_core_web_sm"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -344,7 +344,7 @@ a:hover {
 </div>
 <p>To demonstrate the functionality, the preprocessing function is applied to a sample dataset containing reviews. This will output the cleaned versions of the input reviews, showing how punctuation, common words, and case have been normalized.</p>
 <div class="code-wrapper">
-<div id="3043c8ee" class="cell" data-execution_count="4">
+<div id="f6f5397e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample input text</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sample_text <span class="op">=</span> [<span class="st">"The pandemic has affected the world.. @100% https://example.com!! :)"</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>cleaned_text <span class="op">=</span> preprocess_text(sample_text)</span>
@@ -356,7 +356,7 @@ a:hover {
 </div>
 <p>Next, I create a DataFrame with 20 sample reviews, ratings, and IDs, and apply the function to clean the review texts.</p>
 <div class="code-wrapper">
-<div id="126ad812" class="cell" data-execution_count="5">
+<div id="d1de0395" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sample DataFrame with texts</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
@@ -535,7 +535,7 @@ a:hover {
 <p>To gain insights into the most frequently mentioned words in the reviews, I created a word cloud. This is a visual representation of the text data, where the size of each word indicates its frequency or importance. Here, I have used the most common words from the cleaned review data.</p>
 <p>The word cloud visualization highlighted the most frequently mentioned words in the reviews, offering a quick and intuitive understanding of the main themes and sentiments expressed. Larger words appear more often in the reviews.</p>
 <div class="code-wrapper">
-<div id="235b9a09" class="cell" data-fig="true" data-execution_count="6">
+<div id="bbf724ac" class="cell" data-fig="true" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-overflow-wrap"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.probability <span class="im">import</span> FreqDist</span>
@@ -940,7 +940,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 <script src="../../assets/js/scripts.js"></script>
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

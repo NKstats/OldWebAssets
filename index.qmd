@@ -3,7 +3,7 @@ about:
   template: jolla
   id: about-block
   image-shape: round
-  image: "/assets/imgs/self1.JPG"
+  image: "./assets/imgs/self1.JPG"
 ---
 ::: {#about-block class="centered-text"}
 
