@@ -1,4 +1,1 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e566f9dd1699045ba8fe7ac06b9bb05071f6302
+Initial web set up.
